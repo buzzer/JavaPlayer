@@ -1,0 +1,281 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svnroot/java-player/!svn/ver/84/javaclient2
+END
+LogInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/java-player/!svn/ver/69/javaclient2/LogInterface.java
+END
+SonarInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/java-player/!svn/ver/84/javaclient2/SonarInterface.java
+END
+RFIDInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/java-player/!svn/ver/84/javaclient2/RFIDInterface.java
+END
+SimulationInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/java-player/!svn/ver/84/javaclient2/SimulationInterface.java
+END
+Graphics2DInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/java-player/!svn/ver/70/javaclient2/Graphics2DInterface.java
+END
+AbstractPositionDevice.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnroot/java-player/!svn/ver/60/javaclient2/AbstractPositionDevice.java
+END
+CameraInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/java-player/!svn/ver/84/javaclient2/CameraInterface.java
+END
+PlayerException.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/java-player/!svn/ver/69/javaclient2/PlayerException.java
+END
+OpaqueInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/java-player/!svn/ver/69/javaclient2/OpaqueInterface.java
+END
+IMUInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/java-player/!svn/ver/77/javaclient2/IMUInterface.java
+END
+Position2DInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/java-player/!svn/ver/84/javaclient2/Position2DInterface.java
+END
+PlayerDevice.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/java-player/!svn/ver/84/javaclient2/PlayerDevice.java
+END
+PlayerClientUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/java-player/!svn/ver/70/javaclient2/PlayerClientUtils.java
+END
+PowerInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/java-player/!svn/ver/84/javaclient2/PowerInterface.java
+END
+WiFiInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/java-player/!svn/ver/84/javaclient2/WiFiInterface.java
+END
+JoystickInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/java-player/!svn/ver/84/javaclient2/JoystickInterface.java
+END
+LocalizeInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/java-player/!svn/ver/84/javaclient2/LocalizeInterface.java
+END
+PointCloud3DInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/java-player/!svn/ver/84/javaclient2/PointCloud3DInterface.java
+END
+WSNInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/java-player/!svn/ver/84/javaclient2/WSNInterface.java
+END
+SpeechRecognitionInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnroot/java-player/!svn/ver/84/javaclient2/SpeechRecognitionInterface.java
+END
+PlayerClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/java-player/!svn/ver/84/javaclient2/PlayerClient.java
+END
+FiducialInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/java-player/!svn/ver/84/javaclient2/FiducialInterface.java
+END
+LimbInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/java-player/!svn/ver/84/javaclient2/LimbInterface.java
+END
+WaveformInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/java-player/!svn/ver/84/javaclient2/WaveformInterface.java
+END
+Graphics3DInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/java-player/!svn/ver/70/javaclient2/Graphics3DInterface.java
+END
+SoundInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/java-player/!svn/ver/60/javaclient2/SoundInterface.java
+END
+GPSInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/java-player/!svn/ver/84/javaclient2/GPSInterface.java
+END
+Position1DInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/java-player/!svn/ver/84/javaclient2/Position1DInterface.java
+END
+BumperInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/java-player/!svn/ver/84/javaclient2/BumperInterface.java
+END
+Position3DInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/java-player/!svn/ver/84/javaclient2/Position3DInterface.java
+END
+MComInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/java-player/!svn/ver/84/javaclient2/MComInterface.java
+END
+PlannerInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/java-player/!svn/ver/84/javaclient2/PlannerInterface.java
+END
+HealthInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/java-player/!svn/ver/77/javaclient2/HealthInterface.java
+END
+LaserInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/java-player/!svn/ver/84/javaclient2/LaserInterface.java
+END
+ActarrayInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/java-player/!svn/ver/84/javaclient2/ActarrayInterface.java
+END
+AudioMixerInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/java-player/!svn/ver/69/javaclient2/AudioMixerInterface.java
+END
+BlobfinderInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/java-player/!svn/ver/84/javaclient2/BlobfinderInterface.java
+END
+SpeechInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/java-player/!svn/ver/75/javaclient2/SpeechInterface.java
+END
+AIOInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/java-player/!svn/ver/84/javaclient2/AIOInterface.java
+END
+AudioDSPInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/java-player/!svn/ver/84/javaclient2/AudioDSPInterface.java
+END
+GripperInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/java-player/!svn/ver/84/javaclient2/GripperInterface.java
+END
+IRInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/java-player/!svn/ver/84/javaclient2/IRInterface.java
+END
+BlinkenlightInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/java-player/!svn/ver/84/javaclient2/BlinkenlightInterface.java
+END
+DIOInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/java-player/!svn/ver/84/javaclient2/DIOInterface.java
+END
+MapInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/java-player/!svn/ver/84/javaclient2/MapInterface.java
+END
+PtzInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/java-player/!svn/ver/84/javaclient2/PtzInterface.java
+END
