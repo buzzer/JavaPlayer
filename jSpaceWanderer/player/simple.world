@@ -8,14 +8,14 @@ include "map.inc"
 #size [20 17]
 
 # set the resolution of the underlying raytrace model in meters
-resolution 0.02
+resolution 0.021
 
 # configure the GUI window
 window
 (
   size [ 1000.000 800.000 ]
   center [0 0]
-  scale 0.025
+  scale 37.481
   rotate [ 0 0 ]
 )
 

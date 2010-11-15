@@ -20,13 +20,13 @@
  *
  */
 
-import javaclient3.BlobfinderInterface;
-import javaclient3.PlayerClient;
-import javaclient3.PlayerException;
-import javaclient3.Position2DInterface;
-import javaclient3.SonarInterface;
-import javaclient3.structures.PlayerConstants;
-import javaclient3.structures.blobfinder.PlayerBlobfinderBlob;
+import javaclient2.BlobfinderInterface;
+import javaclient2.PlayerClient;
+import javaclient2.PlayerException;
+import javaclient2.Position2DInterface;
+import javaclient2.SonarInterface;
+import javaclient2.structures.PlayerConstants;
+import javaclient2.structures.blobfinder.PlayerBlobfinderBlob;
 
 public class BlobfinderExample {
 	
