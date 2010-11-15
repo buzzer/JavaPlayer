@@ -1,1 +1,0 @@
-/Users/sebastian/projekt090406/stage_local/map.inc
