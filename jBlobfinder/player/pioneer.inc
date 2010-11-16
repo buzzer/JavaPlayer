@@ -117,17 +117,19 @@ define pioneer2dx position
   # estimated mass in KG
   mass 15.0 
 	
-  # this polygon approximates the shape of a pioneer
-  polygons 1
-  polygon[0].points 8
-  polygon[0].point[0] [  0.23  0.05 ]
-  polygon[0].point[1] [  0.15  0.15 ]
-  polygon[0].point[2] [ -0.15  0.15 ]
-  polygon[0].point[3] [ -0.23  0.05 ]
-  polygon[0].point[4] [ -0.23 -0.05 ]
-  polygon[0].point[5] [ -0.15 -0.15 ]
-  polygon[0].point[6] [  0.15 -0.15 ]
-  polygon[0].point[7] [  0.23 -0.05 ]
+  # this block approximates the shape of a pioneer
+  block
+  (
+    points 8
+    point[0] [  0.23  0.05 ]
+    point[1] [  0.15  0.15 ]
+    point[2] [ -0.15  0.15 ]
+    point[3] [ -0.23  0.05 ]
+    point[4] [ -0.23 -0.05 ]
+    point[5] [ -0.15 -0.15 ]
+    point[6] [  0.15 -0.15 ]
+    point[7] [  0.23 -0.05 ]
+  )
 
   # differential steering model
   drive "diff"
