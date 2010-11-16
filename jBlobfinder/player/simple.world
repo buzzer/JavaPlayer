@@ -43,6 +43,7 @@ pioneer2dx
     #range_max 5
     # camera parameters
     #image [160 120]		#resolution
+    image [80 60]		#resolution
     
   )
 )

@@ -47,6 +47,9 @@ public class BlobfinderExample {
 	
 	// the number of blobs found
 	static int blobCount;
+	static boolean blobfound = false;
+	static int x_rec = -1;
+	static int y_rec = -1;
 	
 	public static void main (String[] args) {
 		PlayerClient        robot = null;
@@ -95,20 +98,31 @@ public class BlobfinderExample {
 							(sonarValues [4] > SONAR_THRESHOLD) && 
 							(sonarValues [5] > SONAR_THRESHOLD) && 
 							(sonarValues [6] > SONAR_THRESHOLD) 
-					))
-				posi.setSpeed (xspeed, yawspeed);
-			else
+					)) {
+				xspeed = xspeed;
+				yawspeed = yawspeed;
+			} else {
 				// if we have obstacles in front (both left and right), rotate
-				if (sonarValues [0] < sonarValues [7])
-					posi.setSpeed (0, -DEF_YAW_SPEED);	
-				else
-					posi.setSpeed (0, DEF_YAW_SPEED);
+				if (sonarValues [0] < sonarValues [7]) {
+					xspeed = 0;
+					yawspeed = -DEF_YAW_SPEED;
+				} else {
+					xspeed = 0;
+					yawspeed = DEF_YAW_SPEED;
+				}
+			}
+			if (blobfound == true) {
+				xspeed = 0;
+				yawspeed = 0;
+			}
+			posi.setSpeed (xspeed, yawspeed);
 			
 			// get the number of blobs detected
 			while (!bfi.isDataReady ());
 			blobCount = bfi.getData ().getBlobs_count ();
 			
-			if (blobCount > 0)
+			if (blobCount > 0) {
+				blobfound = false;
 				for (int i = 0; i < blobCount; i++) {
 					PlayerBlobfinderBlob unblob = bfi.getData ().getBlobs ()[i];
 					
@@ -122,12 +136,26 @@ public class BlobfinderExample {
 					int bottom = unblob.getBottom ();
 					
 					int area   = unblob.getArea   ();
+					int color  = unblob.getColor  ();
 					
-					System.out.println ("Blob [" + i + "], has area: [" + area + 
-							"] blob coords: ["+ right + ", " + top + "] -> " + 
-							"[" + left + "," + bottom + "]" + 
-							" with center at: [" + x + "," + y + "]");
+					if (color == 0xFF0000) {
+						if (x != x_rec || y != y_rec) { // Inform on changed pos only
+							System.out.printf("Yehaa, found blob with color 0x%06X at (%2d,%2d)\n",
+									color,
+									x, y);
+						}
+						blobfound = true;
+						x_rec = x;	y_rec = y;
+					}
+					
+//					System.out.println ("Blob [" + i + "], has area: [" + area + 
+//							"] blob coords: ["+ right + ", " + top + "] -> " + 
+//							"[" + left + "," + bottom + "]" + 
+//							" with center at: [" + x + "," + y + "]");
 				}
+			} else {
+				blobfound = false;
+			}
 		}
 	}
 }
