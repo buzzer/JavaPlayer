@@ -99,8 +99,8 @@ public class BlobfinderExample {
 							(sonarValues [5] > SONAR_THRESHOLD) && 
 							(sonarValues [6] > SONAR_THRESHOLD) 
 					)) {
-				xspeed = xspeed;
-				yawspeed = yawspeed;
+//				xspeed = xspeed;
+//				yawspeed = yawspeed;
 			} else {
 				// if we have obstacles in front (both left and right), rotate
 				if (sonarValues [0] < sonarValues [7]) {
@@ -129,13 +129,13 @@ public class BlobfinderExample {
 					int x = unblob.getX (); 
 					int y = unblob.getY ();
 					
-					int left  = unblob.getLeft  (); 
-					int right = unblob.getRight ();
-					
-					int top    = unblob.getTop    (); 
-					int bottom = unblob.getBottom ();
-					
-					int area   = unblob.getArea   ();
+//					int left  = unblob.getLeft  (); 
+//					int right = unblob.getRight ();
+//					
+//					int top    = unblob.getTop    (); 
+//					int bottom = unblob.getBottom ();
+//					
+//					int area   = unblob.getArea   ();
 					int color  = unblob.getColor  ();
 					
 					if (color == 0xFF0000) {
