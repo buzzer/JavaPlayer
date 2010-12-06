@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: ActarrayInterface.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: ActarrayInterface.java 101 2010-11-22 14:43:02Z corot $
  *
  */
 package javaclient3;
@@ -82,19 +82,23 @@ public class ActarrayInterface extends PlayerDevice {
                     xdr.close ();
 
                     // Buffer for reading actuators data
-                    buffer = new byte[PLAYER_ACTARRAY_NUM_ACTUATORS * 12];
+                    buffer = new byte[PLAYER_ACTARRAY_NUM_ACTUATORS * 24];
                     // Read actuators data
-                    is.readFully (buffer, 0, actuatorsCount * 12);
+                    is.readFully (buffer, 0, actuatorsCount * 24);
                     xdr = new XdrBufferDecodingStream (buffer);
                     xdr.beginDecoding ();
                     
                     PlayerActarrayActuator[] paas = new PlayerActarrayActuator[actuatorsCount];
                     for (int i = 0; i < actuatorsCount; i++) {
                         PlayerActarrayActuator paa = new PlayerActarrayActuator ();
+                        //unknown int field, always = 1, probably PLAYER_ACTARRAY_DATA_STATE
+                        xdr.xdrDecodeInt(); 
                         paa.setPosition (xdr.xdrDecodeFloat ());
                         paa.setSpeed    (xdr.xdrDecodeFloat ());
+                        paa.setAcceleration(xdr.xdrDecodeFloat ());
+                        paa.setCurrent  (xdr.xdrDecodeFloat ());
                         paa.setState    (xdr.xdrDecodeByte  ());
-                        
+
                         paas[i] = paa;
                     }
                     xdr.endDecoding   ();
@@ -157,7 +161,7 @@ public class ActarrayInterface extends PlayerDevice {
      */
     public void setSpeed (int joint, float speed) {
         try {
-            sendHeader (PLAYER_MSGTYPE_CMD, PLAYER_ACTARRAY_POS_CMD, 8);
+            sendHeader (PLAYER_MSGTYPE_CMD, PLAYER_ACTARRAY_SPEED_CMD, 8);
             XdrBufferEncodingStream xdr = new XdrBufferEncodingStream (8);
             xdr.beginEncoding (null, 0);
             xdr.xdrEncodeByte  ((byte)joint);

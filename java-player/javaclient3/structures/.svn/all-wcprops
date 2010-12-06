@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 55
-/svnroot/java-player/!svn/ver/99/javaclient3/structures
+V 56
+/svnroot/java-player/!svn/ver/101/javaclient3/structures
 END
 PlayerOrientation3d.java
 K 25
@@ -24,8 +24,8 @@ END
 PlayerPose.java
 K 25
 svn:wc:ra_dav:version-url
-V 71
-/svnroot/java-player/!svn/ver/91/javaclient3/structures/PlayerPose.java
+V 72
+/svnroot/java-player/!svn/ver/101/javaclient3/structures/PlayerPose.java
 END
 PlayerDevAddr.java
 K 25
@@ -42,8 +42,8 @@ END
 PlayerConstants.java
 K 25
 svn:wc:ra_dav:version-url
-V 76
-/svnroot/java-player/!svn/ver/98/javaclient3/structures/PlayerConstants.java
+V 77
+/svnroot/java-player/!svn/ver/101/javaclient3/structures/PlayerConstants.java
 END
 PlayerPose3d.java
 K 25

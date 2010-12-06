@@ -1,7 +1,7 @@
 10
 
 dir
-99
+104
 https://java-player.svn.sourceforge.net/svnroot/java-player/javaclient
 https://java-player.svn.sourceforge.net/svnroot/java-player
 
@@ -638,10 +638,10 @@ has-props
 
 16330
 
-structures
+extra
 dir
 
-extra
+structures
 dir
 
 WaveformInterface.java
@@ -780,40 +780,6 @@ has-props
 
 6408
 
-Position3DInterface.java
-file
-
-
-
-
-2010-11-04T12:44:54.000000Z
-014f2815ab683e8513e60e79c15da0a2
-2005-06-14T09:41:16.000000Z
-22
-veedee
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-22990
-
 MComInterface.java
 file
 
@@ -847,6 +813,40 @@ has-props
 
 
 11454
+
+Position3DInterface.java
+file
+
+
+
+
+2010-11-04T12:44:54.000000Z
+014f2815ab683e8513e60e79c15da0a2
+2005-06-14T09:41:16.000000Z
+22
+veedee
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+22990
 
 NomadInterface.java
 file
@@ -950,40 +950,6 @@ has-props
 
 4219
 
-AudioMixerInterface.java
-file
-
-
-
-
-2010-11-04T12:44:54.000000Z
-c8ae8f5f02ba804380d07ba747bcda73
-2006-02-14T17:56:06.000000Z
-33
-veedee
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6677
-
 BlobfinderInterface.java
 file
 
@@ -1017,6 +983,40 @@ has-props
 
 
 9393
+
+AudioMixerInterface.java
+file
+
+
+
+
+2010-11-04T12:44:54.000000Z
+c8ae8f5f02ba804380d07ba747bcda73
+2006-02-14T17:56:06.000000Z
+33
+veedee
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6677
 
 LaserInterface.java
 file

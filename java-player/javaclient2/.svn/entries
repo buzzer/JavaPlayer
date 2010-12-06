@@ -1,7 +1,7 @@
 10
 
 dir
-99
+104
 https://java-player.svn.sourceforge.net/svnroot/java-player/javaclient2
 https://java-player.svn.sourceforge.net/svnroot/java-player
 
@@ -607,40 +607,6 @@ has-props
 
 11656
 
-PointCloud3DInterface.java
-file
-
-
-
-
-2010-11-04T12:44:55.000000Z
-ffe0e6a877b1084273f41547673259f3
-2007-11-25T23:25:15.398556Z
-84
-veedee
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4720
-
 WSNInterface.java
 file
 
@@ -674,6 +640,40 @@ has-props
 
 
 10276
+
+PointCloud3DInterface.java
+file
+
+
+
+
+2010-11-04T12:44:55.000000Z
+ffe0e6a877b1084273f41547673259f3
+2007-11-25T23:25:15.398556Z
+84
+veedee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4720
 
 SpeechRecognitionInterface.java
 file
@@ -777,10 +777,10 @@ has-props
 
 17119
 
-structures
+extra
 dir
 
-extra
+structures
 dir
 
 LimbInterface.java
@@ -919,40 +919,6 @@ has-props
 
 2418
 
-GPSInterface.java
-file
-
-
-
-
-2010-11-04T12:44:55.000000Z
-b4c2c852fde4ade829e7a51ae9a6dbf3
-2007-11-25T23:25:15.398556Z
-84
-veedee
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4016
-
 Position1DInterface.java
 file
 
@@ -986,6 +952,40 @@ has-props
 
 
 23091
+
+GPSInterface.java
+file
+
+
+
+
+2010-11-04T12:44:55.000000Z
+b4c2c852fde4ade829e7a51ae9a6dbf3
+2007-11-25T23:25:15.398556Z
+84
+veedee
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4016
 
 BumperInterface.java
 file

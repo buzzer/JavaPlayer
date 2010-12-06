@@ -200,7 +200,7 @@ public class XdrBufferEncodingStream extends XdrEncodingStream {
         // First calculate the number of bytes needed for padding.
         //
         int padding = (4 - (length & 3)) & 3;
-        if ( bufferIndex <= bufferHighmark - (length + padding) ) {
+        if ( bufferIndex <= bufferHighmark - (length + padding - 4) ) {
             System.arraycopy(value, offset, buffer, bufferIndex, length);
             bufferIndex += length;
             if ( padding != 0 ) {

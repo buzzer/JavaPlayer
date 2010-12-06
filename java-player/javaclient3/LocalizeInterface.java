@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: LocalizeInterface.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: LocalizeInterface.java 102 2010-11-25 08:38:21Z corot $
  *
  */
 package javaclient3;
@@ -155,8 +155,8 @@ public class LocalizeInterface extends PlayerDevice {
      */
     public void setPose (PlayerLocalizeSetPose plsp) {
         try {
-            sendHeader (PLAYER_MSGTYPE_REQ, PLAYER_LOCALIZE_REQ_SET_POSE, 24 + 24);
-            XdrBufferEncodingStream xdr = new XdrBufferEncodingStream (24 + 24);
+            sendHeader (PLAYER_MSGTYPE_REQ, PLAYER_LOCALIZE_REQ_SET_POSE, 24 + 48);
+            XdrBufferEncodingStream xdr = new XdrBufferEncodingStream (24 + 48);
             xdr.beginEncoding (null, 0);
             xdr.xdrEncodeDouble (plsp.getMean ().getPx ());
             xdr.xdrEncodeDouble (plsp.getMean ().getPy ());
@@ -164,6 +164,9 @@ public class LocalizeInterface extends PlayerDevice {
             xdr.xdrEncodeDouble (plsp.getCov ()[0]);
             xdr.xdrEncodeDouble (plsp.getCov ()[1]);
             xdr.xdrEncodeDouble (plsp.getCov ()[2]);
+            xdr.xdrEncodeDouble (plsp.getCov ()[3]);
+            xdr.xdrEncodeDouble (plsp.getCov ()[4]);
+            xdr.xdrEncodeDouble (plsp.getCov ()[5]);
             xdr.endEncoding ();
             os.write (xdr.getXdrData (), 0, xdr.getXdrLength ());
             xdr.close ();

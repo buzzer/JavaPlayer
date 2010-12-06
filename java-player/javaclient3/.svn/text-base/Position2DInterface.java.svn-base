@@ -288,6 +288,36 @@ public class Position2DInterface extends AbstractPositionDevice {
         }
     }
 
+    /**
+     * The position interface accepts translational velocity + absolute heading commands
+     * (speed and angular position) for the robot's motors (only supported by some drivers).
+     * <br><br>
+     * See the player_position2d_cmd_vel_head_t structure from player.h
+     * @param velocity forward velocity (m/s)
+     * @param absolute turning angle (rad)
+     */
+    public void setVelHead (double velocity, double angle) {
+        try {
+            sendHeader (PLAYER_MSGTYPE_CMD, PLAYER_POSITION2D_CMD_VEL_HEAD, 16);
+            XdrBufferEncodingStream xdr = new XdrBufferEncodingStream (16);
+            xdr.beginEncoding (null, 0);
+            xdr.xdrEncodeDouble (velocity);
+            xdr.xdrEncodeDouble (angle);
+            xdr.endEncoding ();
+            os.write (xdr.getXdrData (), 0, xdr.getXdrLength ());
+            xdr.close ();
+            os.flush ();
+        } catch (IOException e) {
+            throw new PlayerException
+                ("[Position2D] : Couldn't send velocity/head command: " +
+                        e.toString(), e);
+        } catch (OncRpcException e) {
+            throw new PlayerException
+                ("[Position2D] : Error while XDR-encoding velocity/head command: " +
+                        e.toString(), e);
+        }
+    }
+
     private void readGeom () {
         try {
             // Buffer for reading pose and size

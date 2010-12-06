@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: XdrBufferEncodingStream.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: XdrBufferEncodingStream.java 104 2010-12-05 13:00:38Z corot $
  *
  */
 /*
@@ -50,7 +50,7 @@ import java.net.InetAddress;
  * The <code>XdrBufferEncodingStream</code> class provides a buffer-based
  * XDR stream.
  *
- * @version $Revision: 90 $ $Date: 2010-05-02 20:09:04 +0200 (So, 02 Mai 2010) $ $State$ $Locker$
+ * @version $Revision: 104 $ $Date: 2010-12-05 14:00:38 +0100 (So, 05 Dez 2010) $ $State$ $Locker$
  * @author Harald Albrecht
  */
 public class XdrBufferEncodingStream extends XdrEncodingStream {
@@ -200,7 +200,7 @@ public class XdrBufferEncodingStream extends XdrEncodingStream {
         // First calculate the number of bytes needed for padding.
         //
         int padding = (4 - (length & 3)) & 3;
-        if ( bufferIndex <= bufferHighmark - (length + padding) ) {
+        if ( bufferIndex <= bufferHighmark - (length + padding - 4) ) {
             System.arraycopy(value, offset, buffer, bufferIndex, length);
             bufferIndex += length;
             if ( padding != 0 ) {

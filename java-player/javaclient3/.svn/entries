@@ -1,14 +1,14 @@
 10
 
 dir
-99
+104
 https://java-player.svn.sourceforge.net/svnroot/java-player/javaclient3
 https://java-player.svn.sourceforge.net/svnroot/java-player
 
 
 
-2010-08-21T19:06:42.989754Z
-99
+2010-12-05T13:00:38.695706Z
+104
 corot
 
 
@@ -406,10 +406,10 @@ file
 
 
 
-2010-11-04T12:44:56.000000Z
-b3143b1d0c22b4a589d77672b411b456
-2010-05-02T18:09:04.353634Z
-90
+2010-12-06T11:11:40.000000Z
+9ab4f6b9f3a32e8244130e2163d9c62a
+2010-12-05T12:51:27.283694Z
+103
 corot
 has-props
 
@@ -432,7 +432,7 @@ has-props
 
 
 
-26598
+27889
 
 PlayerClientUtils.java
 file
@@ -502,6 +502,9 @@ has-props
 
 6454
 
+xdr
+dir
+
 PowerInterface.java
 file
 
@@ -535,9 +538,6 @@ has-props
 
 
 6223
-
-xdr
-dir
 
 WiFiInterface.java
 file
@@ -613,10 +613,10 @@ file
 
 
 
-2010-11-04T12:44:56.000000Z
-a90caf2f152bd32a1db1e5ddae3178b1
-2010-05-02T18:09:04.353634Z
-90
+2010-12-06T11:11:40.000000Z
+da3819f94af0740145dd1c685e04a065
+2010-11-25T08:38:21.545318Z
+102
 corot
 has-props
 
@@ -639,41 +639,7 @@ has-props
 
 
 
-12168
-
-PointCloud3DInterface.java
-file
-
-
-
-
-2010-11-04T12:44:56.000000Z
-3c2af6591f988e731c10dd000f270276
-2010-05-02T18:09:04.353634Z
-90
-corot
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5841
+12328
 
 WSNInterface.java
 file
@@ -708,6 +674,40 @@ has-props
 
 
 11075
+
+PointCloud3DInterface.java
+file
+
+
+
+
+2010-11-04T12:44:56.000000Z
+3c2af6591f988e731c10dd000f270276
+2010-05-02T18:09:04.353634Z
+90
+corot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5841
 
 SpeechRecognitionInterface.java
 file
@@ -783,10 +783,10 @@ file
 
 
 
-2010-11-04T12:44:56.000000Z
-0cf715ade5b3209f3c1cc0a2d9be3b20
-2010-05-02T18:09:04.353634Z
-90
+2010-12-06T11:11:40.000000Z
+1ff1ea160f0f73acdf2ab00c88c77a96
+2010-11-22T14:43:02.072898Z
+101
 corot
 has-props
 
@@ -809,12 +809,12 @@ has-props
 
 
 
-18250
-
-structures
-dir
+18458
 
 extra
+dir
+
+structures
 dir
 
 LimbInterface.java
@@ -1231,10 +1231,10 @@ file
 
 
 
-2010-11-04T12:44:56.000000Z
-dd6d5e7cef93ee51d0ce61a0be773039
-2010-05-02T18:09:04.353634Z
-90
+2010-12-06T11:11:40.000000Z
+b31caa9ae1da7a1de0f3a52fd94852ce
+2010-11-22T14:43:02.072898Z
+101
 corot
 has-props
 
@@ -1257,7 +1257,7 @@ has-props
 
 
 
-16536
+16786
 
 AudioMixerInterface.java
 file

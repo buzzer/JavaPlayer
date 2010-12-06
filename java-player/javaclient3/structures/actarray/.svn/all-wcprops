@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 64
-/svnroot/java-player/!svn/ver/90/javaclient3/structures/actarray
+V 65
+/svnroot/java-player/!svn/ver/100/javaclient3/structures/actarray
 END
 PlayerActarrayHomeCmd.java
 K 25
@@ -18,8 +18,8 @@ END
 PlayerActarrayActuator.java
 K 25
 svn:wc:ra_dav:version-url
-V 92
-/svnroot/java-player/!svn/ver/90/javaclient3/structures/actarray/PlayerActarrayActuator.java
+V 93
+/svnroot/java-player/!svn/ver/100/javaclient3/structures/actarray/PlayerActarrayActuator.java
 END
 PlayerActarrayPowerConfig.java
 K 25

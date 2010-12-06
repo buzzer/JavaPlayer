@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: PlayerActarrayActuator.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: PlayerActarrayActuator.java 100 2010-11-22 14:40:39Z corot $
  *
  */
 
@@ -34,6 +34,10 @@ import javaclient3.structures.*;
  */
 public class PlayerActarrayActuator implements PlayerConstants {
 
+    // The acceleration of the actuator in m/s^2 or rad/s^2 depending on the type.
+    private float acceleration;
+    // The current of the actuator in A.
+    private float current;
     // The position of the actuator in m or rad depending on the type. 
     private float position;
     // The speed of the actuator in m/s or rad/s depending on the type. 
@@ -84,5 +88,37 @@ public class PlayerActarrayActuator implements PlayerConstants {
     public synchronized void setState (byte newState) {
         this.state = newState;
     }
+
+    /**
+     * @return  The acceleration of the actuator in m/s^2 or rad/s^2 depending on the type.
+     **/
+    public synchronized float getAcceleration() {
+        return acceleration;
+    }
+
+    /**
+     * @param newAcceleration  The acceleration of the actuator in m/s^2 or rad/s^2 depending on the type.
+     *
+     */
+    public synchronized void setAcceleration(float newAcceleration) {
+        this.acceleration = newAcceleration;
+    }
+
+    /**
+     * @return  The current of the actuator in A.
+     **/
+    public synchronized float getCurrent() {
+        return current;
+    }
+
+    /**
+     * @param newCurrent  The current of the actuator in A.
+     *
+     */
+    public synchronized void setCurrent(float newCurrent) {
+        this.current = newCurrent;
+    }
+
+
 
 }

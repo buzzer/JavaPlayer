@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 44
-/svnroot/java-player/!svn/ver/99/javaclient3
+V 45
+/svnroot/java-player/!svn/ver/104/javaclient3
 END
 RangerInterface.java
 K 25
@@ -72,8 +72,8 @@ END
 Position2DInterface.java
 K 25
 svn:wc:ra_dav:version-url
-V 69
-/svnroot/java-player/!svn/ver/90/javaclient3/Position2DInterface.java
+V 70
+/svnroot/java-player/!svn/ver/103/javaclient3/Position2DInterface.java
 END
 PlayerDevice.java
 K 25
@@ -108,20 +108,20 @@ END
 LocalizeInterface.java
 K 25
 svn:wc:ra_dav:version-url
-V 67
-/svnroot/java-player/!svn/ver/90/javaclient3/LocalizeInterface.java
-END
-PointCloud3DInterface.java
-K 25
-svn:wc:ra_dav:version-url
-V 71
-/svnroot/java-player/!svn/ver/90/javaclient3/PointCloud3DInterface.java
+V 68
+/svnroot/java-player/!svn/ver/102/javaclient3/LocalizeInterface.java
 END
 WSNInterface.java
 K 25
 svn:wc:ra_dav:version-url
 V 62
 /svnroot/java-player/!svn/ver/90/javaclient3/WSNInterface.java
+END
+PointCloud3DInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/java-player/!svn/ver/90/javaclient3/PointCloud3DInterface.java
 END
 SpeechRecognitionInterface.java
 K 25
@@ -138,8 +138,8 @@ END
 FiducialInterface.java
 K 25
 svn:wc:ra_dav:version-url
-V 67
-/svnroot/java-player/!svn/ver/90/javaclient3/FiducialInterface.java
+V 68
+/svnroot/java-player/!svn/ver/101/javaclient3/FiducialInterface.java
 END
 LimbInterface.java
 K 25
@@ -165,17 +165,17 @@ svn:wc:ra_dav:version-url
 V 64
 /svnroot/java-player/!svn/ver/90/javaclient3/SoundInterface.java
 END
-GPSInterface.java
-K 25
-svn:wc:ra_dav:version-url
-V 62
-/svnroot/java-player/!svn/ver/90/javaclient3/GPSInterface.java
-END
 Position1DInterface.java
 K 25
 svn:wc:ra_dav:version-url
 V 69
 /svnroot/java-player/!svn/ver/90/javaclient3/Position1DInterface.java
+END
+GPSInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/java-player/!svn/ver/90/javaclient3/GPSInterface.java
 END
 BumperInterface.java
 K 25
@@ -216,8 +216,8 @@ END
 ActarrayInterface.java
 K 25
 svn:wc:ra_dav:version-url
-V 67
-/svnroot/java-player/!svn/ver/90/javaclient3/ActarrayInterface.java
+V 68
+/svnroot/java-player/!svn/ver/101/javaclient3/ActarrayInterface.java
 END
 AudioMixerInterface.java
 K 25

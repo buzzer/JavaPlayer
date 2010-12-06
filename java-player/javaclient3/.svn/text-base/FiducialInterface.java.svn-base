@@ -92,9 +92,13 @@ public class FiducialInterface extends PlayerDevice {
                     xdr.close ();
                     
                     // Buffer for reading fiducials
-                    buffer = new byte[PLAYER_FIDUCIAL_MAX_SAMPLES * (4+24*2)];
+                    // 4 bytes - ID
+                    // 4*2 = 8 bytes - double field
+                    // 6 fields in single PlayerPose3d object
+                    // 2 PlayerPose3d objects
+                    buffer = new byte[PLAYER_FIDUCIAL_MAX_SAMPLES * (4+4*2*6*2)];
                     // Read fiducials
-                    is.readFully (buffer, 0, fiducialsCount * (4+24*2));
+                    is.readFully (buffer, 0, fiducialsCount * (4+4*2*6*2));
                     xdr = new XdrBufferDecodingStream (buffer);
                     xdr.beginDecoding ();
                     PlayerFiducialItem[] pfis = new PlayerFiducialItem[fiducialsCount];
@@ -105,20 +109,20 @@ public class FiducialInterface extends PlayerDevice {
                         PlayerPose3d pose  = new PlayerPose3d ();
                         PlayerPose3d upose = new PlayerPose3d ();
                         
-                        pose.setPx (xdr.xdrDecodeFloat ());
-                        pose.setPy (xdr.xdrDecodeFloat ());
-                        pose.setPz (xdr.xdrDecodeFloat ());
-                        pose.setProll  (xdr.xdrDecodeFloat ());
-                        pose.setPpitch (xdr.xdrDecodeFloat ());
-                        pose.setPyaw   (xdr.xdrDecodeFloat ());
+                        pose.setPx (xdr.xdrDecodeDouble());
+                        pose.setPy (xdr.xdrDecodeDouble());
+                        pose.setPz (xdr.xdrDecodeDouble());
+                        pose.setProll  (xdr.xdrDecodeDouble());
+                        pose.setPpitch (xdr.xdrDecodeDouble());
+                        pose.setPyaw   (xdr.xdrDecodeDouble());
                         
-                        upose.setPx (xdr.xdrDecodeFloat ());
-                        upose.setPy (xdr.xdrDecodeFloat ());
-                        upose.setPz (xdr.xdrDecodeFloat ());
-                        upose.setProll  (xdr.xdrDecodeFloat ());
-                        upose.setPpitch (xdr.xdrDecodeFloat ());
-                        upose.setPyaw   (xdr.xdrDecodeFloat ());
-                        
+                        upose.setPx (xdr.xdrDecodeDouble ());
+                        upose.setPy (xdr.xdrDecodeDouble ());
+                        upose.setPz (xdr.xdrDecodeDouble ());
+                        upose.setProll  (xdr.xdrDecodeDouble ());
+                        upose.setPpitch (xdr.xdrDecodeDouble ());
+                        upose.setPyaw   (xdr.xdrDecodeDouble ());
+                       
                         pfi.setPose  (pose);
                         pfi.setUpose (upose);
                         
