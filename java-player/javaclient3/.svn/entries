@@ -1,7 +1,7 @@
 10
 
 dir
-99
+107
 https://java-player.svn.sourceforge.net/svnroot/java-player/javaclient3
 https://java-player.svn.sourceforge.net/svnroot/java-player
 
@@ -23,12 +23,12 @@ corot
 
 
 
-
+incomplete
 4004fe12-8110-0410-9f50-bf5dcc6afdad
 
 RangerInterface.java
 file
-
+99
 
 
 
@@ -62,7 +62,7 @@ corot
 
 LogInterface.java
 file
-
+99
 
 
 
@@ -96,7 +96,7 @@ has-props
 
 SonarInterface.java
 file
-
+99
 
 
 
@@ -130,7 +130,7 @@ has-props
 
 RFIDInterface.java
 file
-
+99
 
 
 
@@ -164,7 +164,7 @@ has-props
 
 SimulationInterface.java
 file
-
+99
 
 
 
@@ -198,7 +198,7 @@ has-props
 
 Graphics2DInterface.java
 file
-
+99
 
 
 
@@ -232,7 +232,7 @@ has-props
 
 AbstractPositionDevice.java
 file
-
+99
 
 
 
@@ -266,7 +266,7 @@ has-props
 
 CameraInterface.java
 file
-
+99
 
 
 
@@ -300,7 +300,7 @@ has-props
 
 PlayerException.java
 file
-
+99
 
 
 
@@ -334,7 +334,7 @@ has-props
 
 OpaqueInterface.java
 file
-
+99
 
 
 
@@ -368,7 +368,7 @@ corot
 
 IMUInterface.java
 file
-
+99
 
 
 
@@ -402,7 +402,7 @@ corot
 
 Position2DInterface.java
 file
-
+99
 
 
 
@@ -436,7 +436,7 @@ has-props
 
 PlayerClientUtils.java
 file
-
+99
 
 
 
@@ -470,7 +470,7 @@ has-props
 
 PlayerDevice.java
 file
-
+99
 
 
 
@@ -502,9 +502,12 @@ has-props
 
 6454
 
+xdr
+dir
+
 PowerInterface.java
 file
-
+99
 
 
 
@@ -536,12 +539,9 @@ has-props
 
 6223
 
-xdr
-dir
-
 WiFiInterface.java
 file
-
+99
 
 
 
@@ -575,7 +575,7 @@ has-props
 
 JoystickInterface.java
 file
-
+99
 
 
 
@@ -609,7 +609,7 @@ has-props
 
 LocalizeInterface.java
 file
-
+99
 
 
 
@@ -641,43 +641,9 @@ has-props
 
 12168
 
-PointCloud3DInterface.java
-file
-
-
-
-
-2010-11-04T12:44:56.000000Z
-3c2af6591f988e731c10dd000f270276
-2010-05-02T18:09:04.353634Z
-90
-corot
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5841
-
 WSNInterface.java
 file
-
+99
 
 
 
@@ -709,9 +675,43 @@ has-props
 
 11075
 
+PointCloud3DInterface.java
+file
+99
+
+
+
+2010-11-04T12:44:56.000000Z
+3c2af6591f988e731c10dd000f270276
+2010-05-02T18:09:04.353634Z
+90
+corot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5841
+
 SpeechRecognitionInterface.java
 file
-
+99
 
 
 
@@ -745,7 +745,7 @@ has-props
 
 PlayerClient.java
 file
-
+99
 
 
 
@@ -779,7 +779,7 @@ has-props
 
 FiducialInterface.java
 file
-
+99
 
 
 
@@ -811,15 +811,15 @@ has-props
 
 18250
 
-structures
+extra
 dir
 
-extra
+structures
 dir
 
 LimbInterface.java
 file
-
+99
 
 
 
@@ -853,7 +853,7 @@ has-props
 
 WaveformInterface.java
 file
-
+99
 
 
 
@@ -887,7 +887,7 @@ has-props
 
 Graphics3DInterface.java
 file
-
+99
 
 
 
@@ -921,7 +921,7 @@ corot
 
 SoundInterface.java
 file
-
+99
 
 
 
@@ -955,7 +955,7 @@ has-props
 
 Position1DInterface.java
 file
-
+99
 
 
 
@@ -989,7 +989,7 @@ has-props
 
 GPSInterface.java
 file
-
+99
 
 
 
@@ -1023,7 +1023,7 @@ has-props
 
 BumperInterface.java
 file
-
+99
 
 
 
@@ -1057,7 +1057,7 @@ has-props
 
 MComInterface.java
 file
-
+99
 
 
 
@@ -1091,7 +1091,7 @@ has-props
 
 Position3DInterface.java
 file
-
+99
 
 
 
@@ -1125,7 +1125,7 @@ has-props
 
 PlannerInterface.java
 file
-
+99
 
 
 
@@ -1159,7 +1159,7 @@ has-props
 
 HealthInterface.java
 file
-
+99
 
 
 
@@ -1193,7 +1193,7 @@ corot
 
 LaserInterface.java
 file
-
+99
 
 
 
@@ -1227,7 +1227,7 @@ has-props
 
 ActarrayInterface.java
 file
-
+99
 
 
 
@@ -1261,7 +1261,7 @@ has-props
 
 AudioMixerInterface.java
 file
-
+99
 
 
 
@@ -1295,7 +1295,7 @@ has-props
 
 BlobfinderInterface.java
 file
-
+99
 
 
 
@@ -1329,7 +1329,7 @@ has-props
 
 SpeechInterface.java
 file
-
+99
 
 
 
@@ -1363,7 +1363,7 @@ has-props
 
 AIOInterface.java
 file
-
+99
 
 
 
@@ -1397,7 +1397,7 @@ has-props
 
 AudioDSPInterface.java
 file
-
+99
 
 
 
@@ -1431,7 +1431,7 @@ has-props
 
 GripperInterface.java
 file
-
+99
 
 
 
@@ -1465,7 +1465,7 @@ has-props
 
 IRInterface.java
 file
-
+99
 
 
 
@@ -1499,7 +1499,7 @@ has-props
 
 BlinkenlightInterface.java
 file
-
+99
 
 
 
@@ -1533,7 +1533,7 @@ has-props
 
 DIOInterface.java
 file
-
+99
 
 
 
@@ -1567,7 +1567,7 @@ has-props
 
 MapInterface.java
 file
-
+99
 
 
 
@@ -1601,7 +1601,7 @@ has-props
 
 PtzInterface.java
 file
-
+99
 
 
 

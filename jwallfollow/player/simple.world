@@ -4,29 +4,32 @@ include "pioneer.inc"
 # defines 'map' object used for floorplans
 include "map.inc"
 
-#include "urg.inc"
-#include "platte.inc"
-#include "laptop.inc"
+# time to pause (in GUI mode) or quit (in headless mode (-g)) the simulation
+quit_time 3600 # 1 hour of simulated time
+
+paused 0
 
 # set the resolution of the underlying raytrace model in meters
-resolution 0.021
+resolution 0.02
 
 # configure the GUI window
 window
 (
- size [ 800 600 ]
- center [0 0]
- scale 37.481
- rotate [ 0 0 ]
+  size [ 1000.000 800.000 ]  # in pixels
+  center [ 0 0 ]
+  scale 50.0  # pixels per meter
+  rotate [ 0  0 ]
+  			
+  show_data 1              # 1=on 0=off
 )
 
 # load an environment bitmap
 floorplan
-(
-# size of the world in meters
- size [20 15 0.8]
- pose [0 0 0 0]
- bitmap "bitmaps/robotux.png"
+( 
+  name "robotux"
+  size [20.000 15.000 0.800] # size of the world in meters
+  pose [0 0 0 0]
+  bitmap "bitmaps/robotux.png"
 )
 
 # create a robot
@@ -34,5 +37,5 @@ pioneer2dx
 (
   name "robot1"
   color "red"
-  pose [0 -5 0 90]
+  pose [0 -5 0 0]
 )

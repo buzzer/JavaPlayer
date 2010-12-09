@@ -1,5 +1,5 @@
 /*
- *  Player Java Client 2 Examples - BlobfinderExample.java
+ *  Player Java Client 3 Examples - BlobfinderExample.java
  *  Copyright (C) 2006 Radu Bogdan Rusu
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -20,142 +20,112 @@
  *
  */
 
-import javaclient3.BlobfinderInterface;
 import javaclient3.PlayerClient;
 import javaclient3.PlayerException;
 import javaclient3.Position2DInterface;
-import javaclient3.SonarInterface;
+import javaclient3.BlobfinderInterface;
+import javaclient3.RangerInterface;
 import javaclient3.structures.PlayerConstants;
 import javaclient3.structures.blobfinder.PlayerBlobfinderBlob;
 
 public class BlobfinderExample {
-	
-	// define the threshold (any value under this is considered an obstacle)
-	static float SONAR_THRESHOLD = 0.5f;
-	// define the wheel diameter (~example for a Pioneer 3 robot)
-	static float WHEEL_DIAMETER  = 24.0f;
-	
-	// define the default rotational speed in rad/s
-	static float DEF_YAW_SPEED   = 0.30f;
-	static float DEF_X_SPEED     = 0.50f;
-	
-	// array to hold the SONAR sensor values
-	static float[] sonarValues;
-	// translational/rotational speed
-	static float xspeed, yawspeed;
-	static float leftSide, rightSide;
-	
-	// the number of blobs found
-	static int blobCount;
-	static boolean blobfound = false;
-	static int x_rec = -1;
-	static int y_rec = -1;
-	
-	public static void main (String[] args) {
-		PlayerClient        robot = null;
-		Position2DInterface posi  = null;
-		SonarInterface      soni  = null;
-		BlobfinderInterface  bfi  = null;
-		
-		try {
-			// Connect to the Player server
-			robot  = new PlayerClient ("localhost", 6665);
-			posi = robot.requestInterfacePosition2D (0, PlayerConstants.PLAYER_OPEN_MODE);
-			soni = robot.requestInterfaceSonar      (0, PlayerConstants.PLAYER_OPEN_MODE);
-			bfi  = robot.requestInterfaceBlobfinder (0, PlayerConstants.PLAYER_OPEN_MODE);
-		} catch (PlayerException e) {
-			System.err.println ("BlobfinderExample: > Error connecting to Player: ");
-			System.err.println ("    [ " + e.toString() + " ]");
-			System.exit (1);
-		}
-		
-		robot.runThreaded (-1, -1);
-		
-		while (true) {
-			while (!soni.isDataReady ());
-			// get all SONAR values
-			sonarValues = soni.getData ().getRanges ();
-			
-			// read and average the sonar values on the left and right side
-			leftSide  = (sonarValues [1] + sonarValues [2]) / 2; // + sonarValues [3]) / 3;
-			rightSide = (sonarValues [5] + sonarValues [6]) / 2; // + sonarValues [4]) / 3;
-			
-			leftSide = leftSide / 10;
-			rightSide = rightSide / 10;
-			
-			// calculate the translational and rotational velocities
-			xspeed = (leftSide + rightSide) / 2;
-			yawspeed = (float)((leftSide - rightSide) * (180 / Math.PI) / WHEEL_DIAMETER);
-			
-			try { Thread.sleep (100); } catch (Exception e) { }
-			
-			// if the path is clear on the left OR on the right, use {x,yaw}speed
-			if ((
-					(sonarValues [1] > SONAR_THRESHOLD) && 
-					(sonarValues [2] > SONAR_THRESHOLD) && 
-					(sonarValues [3] > SONAR_THRESHOLD) )  ||
-					(
-							(sonarValues [4] > SONAR_THRESHOLD) && 
-							(sonarValues [5] > SONAR_THRESHOLD) && 
-							(sonarValues [6] > SONAR_THRESHOLD) 
-					)) {
-//				xspeed = xspeed;
-//				yawspeed = yawspeed;
-			} else {
-				// if we have obstacles in front (both left and right), rotate
-				if (sonarValues [0] < sonarValues [7]) {
-					xspeed = 0;
-					yawspeed = -DEF_YAW_SPEED;
-				} else {
-					xspeed = 0;
-					yawspeed = DEF_YAW_SPEED;
-				}
-			}
-			if (blobfound == true) {
-				xspeed = 0;
-				yawspeed = 0;
-			}
-			posi.setSpeed (xspeed, yawspeed);
-			
-			// get the number of blobs detected
-			while (!bfi.isDataReady ());
-			blobCount = bfi.getData ().getBlobs_count ();
-			
-			if (blobCount > 0) {
-				blobfound = false;
-				for (int i = 0; i < blobCount; i++) {
-					PlayerBlobfinderBlob unblob = bfi.getData ().getBlobs ()[i];
-					
-					int x = unblob.getX (); 
-					int y = unblob.getY ();
-					
-//					int left  = unblob.getLeft  (); 
-//					int right = unblob.getRight ();
-//					
-//					int top    = unblob.getTop    (); 
-//					int bottom = unblob.getBottom ();
-//					
-//					int area   = unblob.getArea   ();
-					int color  = unblob.getColor  ();
-					
-					if (color == 0xFF0000) {
-						if (x != x_rec || y != y_rec) { // Inform on changed pos only
-							System.out.printf("Yehaa, found blob with color 0x%06X at (%2d,%2d)\n",
-									color,
-									x, y);
-						}
-						blobfound = true;
-						x_rec = x;	y_rec = y;
-					}
-					
-//					System.out.println ("Blob [" + i + "], has area: [" + area + 
-//							"] blob coords: ["+ right + ", " + top + "] -> " + 
-//							"[" + left + "," + bottom + "]" + 
-//							" with center at: [" + x + "," + y + "]");
-				}
-			} else {
-				blobfound = false;
-			}
-		}
-	}
+    
+    // define the threshold (any value under this is considered an obstacle)
+    static double SONAR_THRESHOLD = 0.5;
+    // define the wheel diameter (~example for a Pioneer 3 robot)
+    static double WHEEL_DIAMETER  = 24.0;
+    
+    // define the default rotational speed in rad/s
+    static double DEF_YAW_SPEED   = 0.30;
+    static double DEF_X_SPEED     = 0.50;
+    
+    // array to hold the SONAR sensor values
+    static double[] sonarValues;
+    // translational/rotational speed
+    static double xspeed, yawspeed;
+    static double leftSide, rightSide;
+    
+    // the number of blobs found
+    static int blobCount;
+    
+    public static void main (String[] args) {
+        PlayerClient        robot = null;
+        Position2DInterface posi  = null;
+        RangerInterface     rngi  = null;
+        BlobfinderInterface blfi  = null;
+        
+        try {
+            // Connect to the Player server
+            robot  = new PlayerClient ("localhost", 6665);
+            posi = robot.requestInterfacePosition2D (0, PlayerConstants.PLAYER_OPEN_MODE);
+            rngi = robot.requestInterfaceRanger     (0, PlayerConstants.PLAYER_OPEN_MODE);
+            blfi = robot.requestInterfaceBlobfinder (0, PlayerConstants.PLAYER_OPEN_MODE);
+        } catch (PlayerException e) {
+            System.err.println ("BlobfinderExample: > Error connecting to Player: ");
+            System.err.println ("    [ " + e.toString() + " ]");
+            System.exit (1);
+        }
+        
+        robot.runThreaded (-1, -1);
+        
+        while (true) {
+            while (!rngi.isDataReady ());
+            // get all SONAR values
+            sonarValues = rngi.getData ().getRanges ();
+            
+            // read and average the sonar values on the left and right side
+            leftSide  = (sonarValues [1] + sonarValues [2]) / 2; // + sonarValues [3]) / 3;
+            rightSide = (sonarValues [5] + sonarValues [6]) / 2; // + sonarValues [4]) / 3;
+            
+            leftSide = leftSide / 10;
+            rightSide = rightSide / 10;
+            
+            // calculate the translational and rotational velocities
+            xspeed = (leftSide + rightSide) / 2;
+            yawspeed = ((leftSide - rightSide) * (180 / Math.PI) / WHEEL_DIAMETER);
+            
+            try { Thread.sleep (100); } catch (Exception e) { }
+            
+            // if the path is clear on the left OR on the right, use {x,yaw}speed
+            if (((sonarValues [1] > SONAR_THRESHOLD) && 
+                 (sonarValues [2] > SONAR_THRESHOLD) && 
+                 (sonarValues [3] > SONAR_THRESHOLD))  ||
+                ((sonarValues [4] > SONAR_THRESHOLD) && 
+                 (sonarValues [5] > SONAR_THRESHOLD) && 
+                 (sonarValues [6] > SONAR_THRESHOLD) 
+                ))
+                posi.setSpeed (xspeed, yawspeed);
+            else
+                // if we have obstacles in front (both left and right), rotate
+                if (sonarValues [0] < sonarValues [7])
+                    posi.setSpeed (0, -DEF_YAW_SPEED);    
+                else
+                    posi.setSpeed (0, DEF_YAW_SPEED);
+            
+            // get the number of blobs detected
+            while (!blfi.isDataReady ());
+            blobCount = blfi.getData ().getBlobs_count ();
+            
+            if (blobCount > 0)
+                for (int i = 0; i < blobCount; i++) {
+                    PlayerBlobfinderBlob unblob = blfi.getData ().getBlobs ()[i];
+                    
+                    int x = unblob.getX (); 
+                    int y = unblob.getY ();
+                    
+                    int left  = unblob.getLeft  (); 
+                    int right = unblob.getRight ();
+                    
+                    int top    = unblob.getTop    (); 
+                    int bottom = unblob.getBottom ();
+                    
+                    int area   = unblob.getArea   ();
+                    
+                    System.out.println ("Blob [" + i + "], has area: [" + area + 
+                            "] blob coords: ["+ right + ", " + top + "] -> " + 
+                            "[" + left + "," + bottom + "]" + 
+                            " with center at: [" + x + "," + y + "]");
+                }
+        }
+    }
 }
