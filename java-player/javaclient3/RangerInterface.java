@@ -27,8 +27,9 @@ import java.util.logging.Logger;
 
 
 import javaclient3.structures.*;
-import javaclient3.structures.ranger.PlayerRangerConf;
+import javaclient3.structures.ranger.PlayerRangerDataIntns;
 import javaclient3.structures.ranger.PlayerRangerData;
+import javaclient3.structures.ranger.PlayerRangerConf;
 import javaclient3.structures.ranger.PlayerRangerGeom;
 import javaclient3.xdr.OncRpcException;
 import javaclient3.xdr.XdrBufferDecodingStream;
@@ -43,8 +44,7 @@ import javaclient3.xdr.XdrBufferEncodingStream;
  *      <li>v3.0 - Player 3.0 supported
  * </ul>
  * TODO Implement PLAYER_RANGER_REQ_INTNS, PLAYER_RANGER_REQ_SET_CONFIG,
- * PLAYER_RANGER_DATA_RANGEPOSE, PLAYER_RANGER_DATA_INTNS and
- * PLAYER_RANGER_DATA_INTNSPOSE.
+ * PLAYER_RANGER_DATA_RANGEPOSE and PLAYER_RANGER_DATA_INTNSPOSE.
  */
 public class RangerInterface extends PlayerDevice {
 
@@ -53,12 +53,14 @@ public class RangerInterface extends PlayerDevice {
     // Logging support
     private Logger logger = Logger.getLogger (RangerInterface.class.getName ());
 
-    private PlayerRangerData   prdata;
-    private boolean            readyPrdata = false;
-    private PlayerRangerGeom   prgeom;
-    private boolean            readyPrgeom = false;
-    private PlayerRangerConf prconf;
-    private boolean            readyPrconf = false;
+    private PlayerRangerData        prdata;
+    private boolean                 readyPrdata = false;
+    private PlayerRangerDataIntns   printn;
+    private boolean                 readyPrintn = false;
+    private PlayerRangerGeom        prgeom;
+    private boolean                 readyPrgeom = false;
+    private PlayerRangerConf        prconf;
+    private boolean                 readyPrconf = false;
 
     /**
      * Constructor for RangerInterface.
@@ -105,6 +107,40 @@ public class RangerInterface extends PlayerDevice {
                     readyPrdata = true;
                     break;
                 }
+                case PLAYER_RANGER_DATA_INTNS: {
+                    this.timestamp = header.getTimestamp();
+
+                    // Buffer for reading intens_count
+                    byte[] buffer = new byte[4];
+
+                    // Read intens_count
+                    is.readFully (buffer, 0, 4);
+
+                    // Begin decoding the XDR buffer
+                    XdrBufferDecodingStream xdr = new XdrBufferDecodingStream (buffer);
+                    xdr.beginDecoding ();
+                    int intensCount = xdr.xdrDecodeInt ();
+                    xdr.endDecoding   ();
+                    xdr.close ();
+
+                    // Buffer for reading intensity values
+                    buffer = new byte[intensCount * 8 + 4];
+
+                    // Read intensity values
+                    is.readFully (buffer, 0, intensCount * 8 + 4);
+                    xdr = new XdrBufferDecodingStream (buffer);
+                    xdr.beginDecoding ();
+                    double[] intens = xdr.xdrDecodeDoubleVector ();
+                    xdr.endDecoding   ();
+                    xdr.close ();
+
+                    printn = new PlayerRangerDataIntns ();
+                    printn.setIntns (intens);
+
+                    readyPrintn = true;
+                    break;
+                }
+
             }
         } catch (IOException e) {
             throw new PlayerException
@@ -118,10 +154,16 @@ public class RangerInterface extends PlayerDevice {
     }
 
     /**
-     * Get the state data.
-     * @return an object of type PlayerRangerData containing the requested data
+     * Get range data.
+     * @return an object of type PlayerRangerDataRange containing the requested data
      */
     public PlayerRangerData getData () { return this.prdata; }
+
+    /**
+     * Get intensity data.
+     * @return an object of type PlayerRangerDataIntns containing the requested data
+     */
+    public PlayerRangerDataIntns getDataIntns () { return this.printn; }
 
     /**
      * Get the geometry data.
@@ -136,12 +178,24 @@ public class RangerInterface extends PlayerDevice {
     public PlayerRangerConf getConf () { return this.prconf; }
 
     /**
-     * Check if data is available.
+     * Check if range data is available.
      * @return true if ready, false if not ready
      */
     public boolean isDataReady () {
         if (readyPrdata) {
             readyPrdata = false;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Check if intensity data is available.
+     * @return true if ready, false if not ready
+     */
+    public boolean isDataIntnsReady () {
+        if (readyPrintn) {
+            readyPrintn = false;
             return true;
         }
         return false;

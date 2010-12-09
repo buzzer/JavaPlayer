@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: PlayerConstants.java 101 2010-11-22 14:43:02Z corot $
+ * $Id: PlayerConstants.java 105 2010-12-06 13:01:48Z corot $
  *
  */
 package javaclient3.structures;
@@ -439,6 +439,7 @@ public interface PlayerConstants {
 	public final int PLAYER_POSITION2D_CMD_VEL           = 1;
 	public final int PLAYER_POSITION2D_CMD_POS           = 2;
 	public final int PLAYER_POSITION2D_CMD_CAR           = 3;
+	public final int PLAYER_POSITION2D_CMD_VEL_HEAD      = 4;
 
 	public final int PLAYER_POSITION3D_DATA_STATE    = 1;
 	public final int PLAYER_POSITION3D_DATA_GEOMETRY = 2;
