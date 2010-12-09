@@ -1,7 +1,7 @@
 10
 
 dir
-99
+104
 https://java-player.svn.sourceforge.net/svnroot/java-player/javaclient/structures
 https://java-player.svn.sourceforge.net/svnroot/java-player
 
@@ -60,40 +60,6 @@ has-props
 
 3014
 
-PlayerPosition2DGeomT.java
-file
-
-
-
-
-2010-11-04T12:44:53.000000Z
-33dfbfb1c9bfa271f683838f6d3c878c
-2005-05-10T12:10:24.000000Z
-10
-veedee
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2400
-
 PlayerBumperGeomT.java
 file
 
@@ -128,14 +94,14 @@ has-props
 
 2488
 
-PlayerPosition3DGeomT.java
+PlayerPosition2DGeomT.java
 file
 
 
 
 
 2010-11-04T12:44:53.000000Z
-22a4f10dbe4e096051f31b0ca9b5e949
+33dfbfb1c9bfa271f683838f6d3c878c
 2005-05-10T12:10:24.000000Z
 10
 veedee
@@ -160,7 +126,7 @@ has-props
 
 
 
-2431
+2400
 
 PlayerDeviceDriverInfo.java
 file
@@ -195,6 +161,40 @@ has-props
 
 
 2315
+
+PlayerPosition3DGeomT.java
+file
+
+
+
+
+2010-11-04T12:44:53.000000Z
+22a4f10dbe4e096051f31b0ca9b5e949
+2005-05-10T12:10:24.000000Z
+10
+veedee
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2431
 
 PlayerBumperDefineT.java
 file
@@ -298,14 +298,14 @@ has-props
 
 3837
 
-PlayerPositionGeomT.java
+PlayerWiFiLinkT.java
 file
 
 
 
 
 2010-11-04T12:44:53.000000Z
-c603e7bc6c688e344225d31b1db18215
+9d35df68c2766fbcfc3c1ae03ea7e9a8
 2005-05-10T12:10:24.000000Z
 10
 veedee
@@ -330,7 +330,7 @@ has-props
 
 
 
-2442
+4774
 
 PlayerDeviceIdT.java
 file
@@ -366,14 +366,14 @@ has-props
 
 2683
 
-PlayerWiFiLinkT.java
+PlayerPositionGeomT.java
 file
 
 
 
 
 2010-11-04T12:44:53.000000Z
-9d35df68c2766fbcfc3c1ae03ea7e9a8
+c603e7bc6c688e344225d31b1db18215
 2005-05-10T12:10:24.000000Z
 10
 veedee
@@ -398,41 +398,7 @@ has-props
 
 
 
-4774
-
-Blob.java
-file
-
-
-
-
-2010-11-04T12:44:53.000000Z
-bb029f93f86b1a8070fbd921741d9c4f
-2005-05-10T12:10:24.000000Z
-10
-veedee
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5367
+2442
 
 PlayerSimulationPose2D.java
 file
@@ -467,6 +433,40 @@ has-props
 
 
 3287
+
+Blob.java
+file
+
+
+
+
+2010-11-04T12:44:53.000000Z
+bb029f93f86b1a8070fbd921741d9c4f
+2005-05-10T12:10:24.000000Z
+10
+veedee
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5367
 
 PlayerLaserGeomT.java
 file

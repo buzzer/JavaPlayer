@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: PlayerConstants.java 98 2010-08-21 19:06:18Z corot $
+ * $Id: PlayerConstants.java 101 2010-11-22 14:43:02Z corot $
  *
  */
 package javaclient3.structures;
@@ -247,9 +247,14 @@ public interface PlayerConstants {
     public final int PLAYER_ACTARRAY_BRAKES_REQ       = 2;
     public final int PLAYER_ACTARRAY_GET_GEOM_REQ     = 3;
     public final int PLAYER_ACTARRAY_SPEED_REQ        = 4;
+    public final int PLAYER_ACTARRAY_ACCEL_REQ        = 5;
     public final int PLAYER_ACTARRAY_POS_CMD	      = 1;
-    public final int PLAYER_ACTARRAY_SPEED_CMD        = 2;
-    public final int PLAYER_ACTARRAY_HOME_CMD         = 3;
+    public final int PLAYER_ACTARRAY_MULTI_POS_CMD    = 2;
+    public final int PLAYER_ACTARRAY_SPEED_CMD        = 3;
+    public final int PLAYER_ACTARRAY_MULTI_SPEED_CMD  = 4;
+    public final int PLAYER_ACTARRAY_HOME_CMD         = 5;
+    public final int PLAYER_ACTARRAY_CURRENT_CMD        = 6;
+    public final int PLAYER_ACTARRAY_MULTI_CURRENT_CMD  = 7;
     public final int PLAYER_ACTARRAY_DATA_STATE       = 1;
 
     public final int PLAYER_AIO_MAX_INPUTS  = 8;

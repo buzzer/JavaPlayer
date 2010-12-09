@@ -95,4 +95,9 @@ public class PlayerPose {
     public synchronized void setPa (double newPa) {
         this.pa = newPa;
     }
+
+    @Override
+    public String toString() {
+        return "PlayerPose{ [" + px + " " + py + " 0 " + Math.toDegrees(pa) + "]}";
+    }
 }

@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: Position2DInterface.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: Position2DInterface.java 103 2010-12-05 12:51:27Z corot $
  *
  */
 package javaclient3;
@@ -284,6 +284,36 @@ public class Position2DInterface extends AbstractPositionDevice {
         } catch (OncRpcException e) {
             throw new PlayerException
                 ("[Position2D] : Error while XDR-encoding carlike command: " +
+                        e.toString(), e);
+        }
+    }
+
+    /**
+     * The position interface accepts translational velocity + absolute heading commands
+     * (speed and angular position) for the robot's motors (only supported by some drivers).
+     * <br><br>
+     * See the player_position2d_cmd_vel_head_t structure from player.h
+     * @param velocity forward velocity (m/s)
+     * @param absolute turning angle (rad)
+     */
+    public void setVelHead (double velocity, double angle) {
+        try {
+            sendHeader (PLAYER_MSGTYPE_CMD, PLAYER_POSITION2D_CMD_VEL_HEAD, 16);
+            XdrBufferEncodingStream xdr = new XdrBufferEncodingStream (16);
+            xdr.beginEncoding (null, 0);
+            xdr.xdrEncodeDouble (velocity);
+            xdr.xdrEncodeDouble (angle);
+            xdr.endEncoding ();
+            os.write (xdr.getXdrData (), 0, xdr.getXdrLength ());
+            xdr.close ();
+            os.flush ();
+        } catch (IOException e) {
+            throw new PlayerException
+                ("[Position2D] : Couldn't send velocity/head command: " +
+                        e.toString(), e);
+        } catch (OncRpcException e) {
+            throw new PlayerException
+                ("[Position2D] : Error while XDR-encoding velocity/head command: " +
                         e.toString(), e);
         }
     }

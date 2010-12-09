@@ -1,7 +1,7 @@
 10
 
 dir
-99
+104
 https://java-player.svn.sourceforge.net/svnroot/java-player/javaclient2/structures
 https://java-player.svn.sourceforge.net/svnroot/java-player
 
@@ -133,15 +133,6 @@ dir
 health
 dir
 
-laser
-dir
-
-actarray
-dir
-
-blobfinder
-dir
-
 PlayerDevAddr.java
 file
 
@@ -176,22 +167,28 @@ has-props
 
 3140
 
+blobfinder
+dir
+
+actarray
+dir
+
+laser
+dir
+
 speech
-dir
-
-gripper
-dir
-
-aio
 dir
 
 speechrecognition
 dir
 
-blinkenlight
+aio
 dir
 
-dio
+gripper
+dir
+
+blinkenlight
 dir
 
 PlayerColor.java
@@ -228,10 +225,13 @@ has-props
 
 2423
 
-map
+dio
 dir
 
 ptz
+dir
+
+map
 dir
 
 PlayerOrientation3d.java

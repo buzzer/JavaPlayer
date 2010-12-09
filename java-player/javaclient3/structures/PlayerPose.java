@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: PlayerPose.java 91 2010-06-13 16:11:14Z corot $
+ * $Id: PlayerPose.java 101 2010-11-22 14:43:02Z corot $
  *
  */
 package javaclient3.structures;
@@ -94,5 +94,10 @@ public class PlayerPose {
      */
     public synchronized void setPa (double newPa) {
         this.pa = newPa;
+    }
+
+    @Override
+    public String toString() {
+        return "PlayerPose{ [" + px + " " + py + " 0 " + Math.toDegrees(pa) + "]}";
     }
 }
