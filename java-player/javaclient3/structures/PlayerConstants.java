@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: PlayerConstants.java 105 2010-12-06 13:01:48Z corot $
+ * $Id: PlayerConstants.java 108 2010-12-10 08:14:55Z corot $
  *
  */
 package javaclient3.structures;
@@ -186,7 +186,7 @@ public interface PlayerConstants {
 	public final String PLAYER_HEALTH_STRING         = "health";
 	public final String PLAYER_IMU_STRING            = "imu";
 	public final String PLAYER_POINTCLOUD3D_STRING   = "pointcloud3d";
-	public final String PLAYER_RANGER_STRING         = "ranger"; 
+	public final String PLAYER_RANGER_STRING         = "ranger";
 
 	// the device access modes
 	/**
@@ -486,10 +486,16 @@ public interface PlayerConstants {
     public final int PLAYER_RANGER_DATA_GEOM      = 5;
 
     public final int PLAYER_SIMULATION_IDENTIFIER_MAXLEN = 64;
-	public final int PLAYER_SIMULATION_REQ_GET_POSE2D    = 1;
+    public final int PLAYER_SIMULATION_PROP_VALUE_MAXLEN = 64;
+    public final int PLAYER_SIMULATION_REQ_GET_POSE2D    = 1;
 	public final int PLAYER_SIMULATION_REQ_SET_POSE2D    = 2;
 	public final int PLAYER_SIMULATION_REQ_GET_POSE3D    = 3;
 	public final int PLAYER_SIMULATION_REQ_SET_POSE3D    = 4;
+	public final int PLAYER_SIMULATION_REQ_GET_PROPERTY  = 5;
+	public final int PLAYER_SIMULATION_REQ_SET_PROPERTY  = 6;
+	public final int PLAYER_SIMULATION_CMD_PAUSE         = 1;
+	public final int PLAYER_SIMULATION_CMD_RESET         = 2;
+	public final int PLAYER_SIMULATION_CMD_SAVE          = 3;
 
 	public final int PLAYER_SONAR_MAX_SAMPLES  = 64;
 	public final int PLAYER_SONAR_REQ_GET_GEOM = 1;

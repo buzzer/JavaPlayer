@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: DIOInterface.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: DIOInterface.java 109 2010-12-10 08:27:05Z corot $
  *
  */
 package javaclient3;
@@ -35,11 +35,11 @@ import javaclient3.xdr.XdrBufferEncodingStream;
  * @author Radu Bogdan Rusu, Maxim Batalin
  * @version
  * <ul>
- *      <li>v2.0 - Player 2.0 supported
+ *      <li>v3.0 - Player 3.0 supported
  * </ul>
  */
 public class DIOInterface extends PlayerDevice {
-    
+
     private PlayerDioData pddata;
     private boolean       readyPddata = false;
 
@@ -48,7 +48,7 @@ public class DIOInterface extends PlayerDevice {
      * @param pc a reference to the PlayerClient object
     */
     public DIOInterface (PlayerClient pc) { super(pc); }
-    
+
     /**
      * Read the current state of the digital inputs.
      */
@@ -57,14 +57,14 @@ public class DIOInterface extends PlayerDevice {
             switch (header.getSubtype ()) {
                 case PLAYER_DIO_DATA_VALUES: {
                     this.timestamp = header.getTimestamp();
-               
+
                     pddata = new PlayerDioData ();
-                    
+
                     // Buffer for reading count and digin
                     byte[] buffer = new byte[8];
                     // Read count and digin
                     is.readFully (buffer, 0, 8);
-                    
+
                     // Begin decoding the XDR buffer
                     XdrBufferDecodingStream xdr = new XdrBufferDecodingStream (buffer);
                     xdr.beginDecoding ();
@@ -72,31 +72,31 @@ public class DIOInterface extends PlayerDevice {
                     pddata.setDigin (xdr.xdrDecodeInt ());        // bitfield of samples
                     xdr.endDecoding   ();
                     xdr.close ();
-                    
+
                     readyPddata = true;
                     break;
                 }
             }
         } catch (IOException e) {
-            throw new PlayerException 
-                ("[DIO] : Error reading payload: " + 
+            throw new PlayerException
+                ("[DIO] : Error reading payload: " +
                         e.toString(), e);
         } catch (OncRpcException e) {
-            throw new PlayerException 
-                ("[DIO] : Error while XDR-decoding payload: " + 
+            throw new PlayerException
+                ("[DIO] : Error while XDR-decoding payload: " +
                         e.toString(), e);
         }
     }
-    
+
     /**
      * Returns the DIO data (number of samples, bitfield of samples)
      * @return the DIO data
      */
     public synchronized PlayerDioData getData () { return pddata; }
-    
+
     /**
      * Check if data is available.
-     * @return true if ready, false if not ready 
+     * @return true if ready, false if not ready
      */
     public boolean isDataReady () {
         if (readyPddata) {
@@ -105,7 +105,7 @@ public class DIOInterface extends PlayerDevice {
         }
         return false;
     }
-    
+
     /**
      * The dio interface accepts 4-byte commands which consist of the ouput bitfield.
      * @param count the command
@@ -116,21 +116,20 @@ public class DIOInterface extends PlayerDevice {
             sendHeader (PLAYER_MSGTYPE_CMD, PLAYER_DIO_CMD_VALUES, 8);
             XdrBufferEncodingStream xdr = new XdrBufferEncodingStream (8);
             xdr.beginEncoding (null, 0);
-            xdr.xdrEncodeInt   (count);
-            xdr.xdrEncodeFloat (digout);
+            xdr.xdrEncodeInt (count);
+            xdr.xdrEncodeInt (digout);
             xdr.endEncoding ();
             os.write (xdr.getXdrData (), 0, xdr.getXdrLength ());
             xdr.close ();
             os.flush ();
         } catch (IOException e) {
-            throw new PlayerException 
-                ("[DIO] : Couldn't send output bitfield command request: " + 
+            throw new PlayerException
+                ("[DIO] : Couldn't send output bitfield command request: " +
                         e.toString(), e);
         } catch (OncRpcException e) {
-            throw new PlayerException 
+            throw new PlayerException
                 ("[DIO] : Error while XDR-encoding bitfield command request: "
                         + e.toString(), e);
         }
     }
-    
 }

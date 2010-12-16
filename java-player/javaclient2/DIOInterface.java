@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: DIOInterface.java 84 2007-11-25 23:25:15Z veedee $
+ * $Id: DIOInterface.java 110 2010-12-10 08:34:59Z corot $
  *
  */
 package javaclient2;
@@ -116,8 +116,8 @@ public class DIOInterface extends PlayerDevice {
         	sendHeader (PLAYER_MSGTYPE_CMD, PLAYER_DIO_CMD_VALUES, 8);
         	XdrBufferEncodingStream xdr = new XdrBufferEncodingStream (8);
         	xdr.beginEncoding (null, 0);
-        	xdr.xdrEncodeInt   (count);
-        	xdr.xdrEncodeFloat (digout);
+        	xdr.xdrEncodeInt (count);
+        	xdr.xdrEncodeInt (digout);
         	xdr.endEncoding ();
         	os.write (xdr.getXdrData (), 0, xdr.getXdrLength ());
         	xdr.close ();
