@@ -1,4 +1,4 @@
 .PHONY: latest
 
 latest:
-		svn co https://java-player.svn.sourceforge.net/svnroot/java-player java-player
+		svn co https://java-player.svn.sourceforge.net/svnroot/java-player java-player >> version.txt && tail version.txt
