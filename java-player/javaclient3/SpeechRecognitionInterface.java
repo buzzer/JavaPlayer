@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: SpeechRecognitionInterface.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: SpeechRecognitionInterface.java 112 2011-01-20 22:32:01Z corot $
  *
  */
 package javaclient3;
@@ -30,18 +30,18 @@ import javaclient3.xdr.OncRpcException;
 import javaclient3.xdr.XdrBufferDecodingStream;
 
 /**
- * The speech recognition interface provides access to a speech recognition 
- * server. 
+ * The speech recognition interface provides access to a speech recognition
+ * server.
  * @author Radu Bogdan Rusu
  * @version
  * <ul>
- *      <li>v2.0 - Player 2.0 supported
+ *      <li>v3.0 - Player 3.0 supported
  * </ul>
  */
 public class SpeechRecognitionInterface extends PlayerDevice {
-    
+
     private PlayerSpeechRecognitionData psrdata;
-    private boolean                      readyPsrdata = false;
+    private boolean                     readyPsrdata = false;
 
     /**
      * Constructor for SpeechRecognitionInterface.
@@ -57,53 +57,53 @@ public class SpeechRecognitionInterface extends PlayerDevice {
             switch (header.getSubtype ()) {
                 case SPEECH_RECOGNITION_DATA_STRING: {
                     this.timestamp = header.getTimestamp();
-               
+
                     psrdata = new PlayerSpeechRecognitionData ();
-                    
+
                     // Buffer for reading text_count, array_count
                     byte[] buffer = new byte[8];
                     // Read text_count, array_count
                     is.readFully (buffer, 0, 8);
-                    
+
                     // Begin decoding the XDR buffer
                     XdrBufferDecodingStream xdr = new XdrBufferDecodingStream (buffer);
                     xdr.beginDecoding ();
-                    psrdata.setText_count (xdr.xdrDecodeInt ());
+                    int text_count = xdr.xdrDecodeInt ();
                     xdr.endDecoding   ();
                     xdr.close ();
-                    
-                    buffer = new byte[SPEECH_RECOGNITION_TEXT_LEN];
-                    is.readFully (buffer, 0, psrdata.getText_count ());
-                    psrdata.setText (new String (buffer).toCharArray ());
-                    
+
+                    buffer = new byte[text_count];
+                    is.readFully (buffer, 0, text_count);
+                    psrdata.setText (new String (buffer));
+
                     // Take care of the residual zero bytes
                     if ((psrdata.getText_count () % 4) != 0)
                         is.readFully (buffer, 0, 4 - (psrdata.getText_count () % 4));
-                    
+
                     readyPsrdata = true;
                     break;
                 }
             }
         } catch (IOException e) {
-            throw new PlayerException 
-                ("[SpeechRecognition] : Error reading payload: " + 
+            throw new PlayerException
+                ("[SpeechRecognition] : Error reading payload: " +
                         e.toString(), e);
         } catch (OncRpcException e) {
-            throw new PlayerException 
-                ("[SpeechRecognition] : Error while XDR-decoding payload: " + 
+            throw new PlayerException
+                ("[SpeechRecognition] : Error while XDR-decoding payload: " +
                         e.toString(), e);
         }
     }
-    
+
     /**
      * Get the data.
-     * @return an object of type PlayerSpeechRecognitionData containing the requested data 
+     * @return an object of type PlayerSpeechRecognitionData containing the requested data
      */
     public PlayerSpeechRecognitionData getData () { return this.psrdata; }
-    
+
     /**
      * Check if data is available.
-     * @return true if ready, false if not ready 
+     * @return true if ready, false if not ready
      */
     public boolean isDataReady () {
         if (readyPsrdata) {
@@ -112,6 +112,4 @@ public class SpeechRecognitionInterface extends PlayerDevice {
         }
         return false;
     }
-    
-
 }

@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: SpeechInterface.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: SpeechInterface.java 111 2011-01-20 22:28:56Z corot $
  *
  */
 package javaclient3;
@@ -28,10 +28,10 @@ import javaclient3.xdr.XdrBufferEncodingStream;
 
 /**
  * The speech interface provides access to a speech synthesis system.
- * @author Radu Bogdan Rusu, Maxim Batalin 
+ * @author Radu Bogdan Rusu, Maxim Batalin
  * @version
  * <ul>
- *      <li>v2.0 - Player 2.0 supported
+ *      <li>v3.0 - Player 3.0 supported
  * </ul>
  */
 public class SpeechInterface extends PlayerDevice {
@@ -41,13 +41,13 @@ public class SpeechInterface extends PlayerDevice {
      * @param pc a reference to the PlayerClient object
      */
     public SpeechInterface (PlayerClient pc) { super (pc); }
- 
+
     /**
      * Command: say a string (PLAYER_SPEECH_CMD_SAY)
      * <br><br>
-     * The speech interface accepts a command that is a string to be given to 
-     * the speech synthesizer. 
-     * @param text the string to say 
+     * The speech interface accepts a command that is a string to be given to
+     * the speech synthesizer.
+     * @param text the string to say
      */
     public void speech (String text) {
         String temp = text;
@@ -59,23 +59,23 @@ public class SpeechInterface extends PlayerDevice {
             if ((temp.length () % 4) != 0)
                 leftOvers = 4 - (temp.length () % 4);
             int size = 4 + 4 + temp.length () + leftOvers;
-            
+
             sendHeader (PLAYER_MSGTYPE_CMD, PLAYER_SPEECH_CMD_SAY, size);
-            XdrBufferEncodingStream xdr = new XdrBufferEncodingStream (size+4);
+            XdrBufferEncodingStream xdr = new XdrBufferEncodingStream (size);
             xdr.beginEncoding (null, 0);
-            xdr.xdrEncodeInt  (size);
-            xdr.xdrEncodeString(text);
+            xdr.xdrEncodeInt  (temp.length ());
+            xdr.xdrEncodeString(temp);
             xdr.endEncoding ();
             os.write (xdr.getXdrData (), 0, xdr.getXdrLength ());
             xdr.close ();
             os.flush ();
         } catch (IOException e) {
-            throw new PlayerException 
-                ("[Speech] : Couldn't send speech command request: " + 
+            throw new PlayerException
+                ("[Speech] : Couldn't send speech command request: " +
                     e.toString (), e);
         } catch (OncRpcException e) {
-            throw new PlayerException 
-                ("[Speech] : Couldn't XDR-encode speech command request: " + 
+            throw new PlayerException
+                ("[Speech] : Couldn't XDR-encode speech command request: " +
                     e.toString (), e);
         }
     }

@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: PlayerSpeechRecognitionData.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: PlayerSpeechRecognitionData.java 113 2011-01-20 22:53:08Z corot $
  *
  */
 
@@ -25,49 +25,38 @@ package javaclient3.structures.speechrecognition;
 import javaclient3.structures.*;
 
 /**
- * Data: recognized string (PLAYER_SPEECH_MAX_STRING_LEN)
- * The speech recognition data packet.  
+ * Data: recognized string
+ * The speech recognition data packet.
  * @author Radu Bogdan Rusu
  * @version
  * <ul>
- *      <li>v2.0 - Player 2.0 supported
+ *      <li>v3.0 - Player 3.0 supported
  * </ul>
  */
 public class PlayerSpeechRecognitionData implements PlayerConstants {
 
-    // Length of text 
-    private int text_count;
-    // Recognized text 
-    private char[] text = new char[SPEECH_RECOGNITION_TEXT_LEN];
+    // Recognized text
+    private String text = null;
 
 
     /**
-     * @return  Length of text 
+     * @return  Length of text
      **/
     public synchronized int getText_count () {
-        return this.text_count;
+        return this.text.length();
     }
 
     /**
-     * @param newText_count  Length of text 
-     *
-     */
-    public synchronized void setText_count (int newText_count) {
-        this.text_count = newText_count;
-    }
-    /**
-     * @return  Recognized text 
+     * @return  Recognized text
      **/
-    public synchronized char[] getText () {
+    public synchronized String getText () {
         return this.text;
     }
 
     /**
-     * @param newText  Recognized text 
-     *
+     * @param newText  Recognized text
      */
-    public synchronized void setText (char[] newText) {
+    public synchronized void setText (String newText) {
         this.text = newText;
     }
-
 }
