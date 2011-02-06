@@ -40,7 +40,7 @@ public class PlayerLocalizeSetPose implements PlayerConstants {
     private PlayerPose mean;
     // The diagonal elements of the covariance matrix pose estimate
     //       (m$^2$, rad$^2$). 
-    private double[] cov = new double[3];
+    private double[] cov = new double[6];
 
 
     /**

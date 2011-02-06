@@ -97,10 +97,10 @@ public class LocalizeInterface extends PlayerDevice {
                     xdr.close ();
 
                     // Buffer for reading the hypotheses
-                    buffer = new byte[hypothsCount * (24 + 3*8 + 8)];
+                    buffer = new byte[hypothsCount * (4 + 24 + 48 + 8)];
 
                     // Read the hypotheses
-                    is.readFully (buffer, 0, hypothsCount * (24 + 3*8 + 8));
+                    is.readFully (buffer, 0, hypothsCount * (4 + 24 + 48 + 8));
                     xdr = new XdrBufferDecodingStream (buffer);
                     xdr.beginDecoding ();
 
@@ -109,16 +109,21 @@ public class LocalizeInterface extends PlayerDevice {
                     for (int i = 0; i < hypothsCount; i++) {
                         PlayerLocalizeHypoth plh = new PlayerLocalizeHypoth ();
 
+                        xdr.xdrDecodeInt(); // Hypothesis Count
+
                         PlayerPose pp = new PlayerPose ();
                         pp.setPx (xdr.xdrDecodeDouble ());
                         pp.setPy (xdr.xdrDecodeDouble ());
                         pp.setPa (xdr.xdrDecodeDouble ());
 
                         plh.setMean (pp);
-                        double[] cov = new double[3];
+                        double[] cov = new double[6];
                         cov[0] = xdr.xdrDecodeDouble ();
                         cov[1] = xdr.xdrDecodeDouble ();
                         cov[2] = xdr.xdrDecodeDouble ();
+                        cov[3] = xdr.xdrDecodeDouble ();
+                        cov[4] = xdr.xdrDecodeDouble ();
+                        cov[5] = xdr.xdrDecodeDouble ();
 
                         plh.setCov (cov);
                         plh.setAlpha (xdr.xdrDecodeDouble ());

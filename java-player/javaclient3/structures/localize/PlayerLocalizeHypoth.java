@@ -40,7 +40,7 @@ public class PlayerLocalizeHypoth implements PlayerConstants {
     // The mean value of the pose estimate (m, m, rad). 
     private PlayerPose mean;
     // The covariance matrix pose estimate (m$^2$, rad$^2$). 
-    private double[] cov = new double[3];
+    private double[] cov = new double[6];
     // The weight coefficient for linear combination (alpha) 
     private double alpha;
 

@@ -1,3 +1,5 @@
+package usecase;
+
 /*
  *  Player Java Client 3 Examples - SpaceWandererExample.java
  *  Copyright (C) 2006 Radu Bogdan Rusu
