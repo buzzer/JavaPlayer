@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: LocalizeInterface.java 102 2010-11-25 08:38:21Z corot $
+ * $Id: LocalizeInterface.java 114 2011-02-07 11:17:53Z corot $
  *
  */
 package javaclient3;

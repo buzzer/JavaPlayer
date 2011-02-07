@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: PlayerLocalizeSetPose.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: PlayerLocalizeSetPose.java 114 2011-02-07 11:17:53Z corot $
  *
  */
 
@@ -26,40 +26,39 @@ import javaclient3.structures.*;
 
 /**
  * Request/reply: Set the robot pose estimate.
- * Set the current robot pose hypothesis by sending a 
- * PLAYER_LOCALIZE_REQ_SET_POSE request.  Null response. 
+ * Set the current robot pose hypothesis by sending a
+ * PLAYER_LOCALIZE_REQ_SET_POSE request.  Null response.
  * @author Radu Bogdan Rusu
  * @version
  * <ul>
- *      <li>v2.0 - Player 2.0 supported
+ *      <li>v3.0 - Player 3.0 supported
  * </ul>
  */
 public class PlayerLocalizeSetPose implements PlayerConstants {
 
-    // The mean value of the pose estimate (m, m, rad). 
+    // The mean value of the pose estimate (m, m, rad).
     private PlayerPose mean;
     // The diagonal elements of the covariance matrix pose estimate
-    //       (m$^2$, rad$^2$). 
+    //       (m$^2$, rad$^2$).
     private double[] cov = new double[6];
 
 
     /**
-     * @return  The mean value of the pose estimate (m, m, rad). 
+     * @return  The mean value of the pose estimate (m, m, rad).
      **/
     public synchronized PlayerPose getMean () {
         return this.mean;
     }
 
     /**
-     * @param newMean  The mean value of the pose estimate (m, m, rad). 
-     *
+     * @param newMean  The mean value of the pose estimate (m, m, rad).
      */
     public synchronized void setMean (PlayerPose newMean) {
         this.mean = newMean;
     }
     /**
      * @return  The diagonal elements of the covariance matrix pose estimate
-     *       (m$^2$, rad$^2$). 
+     *       (m$^2$, rad$^2$).
      **/
     public synchronized double[] getCov () {
         return this.cov;
@@ -67,8 +66,7 @@ public class PlayerLocalizeSetPose implements PlayerConstants {
 
     /**
      * @param newCov  The diagonal elements of the covariance matrix pose estimate
-     *       (m$^2$, rad$^2$). 
-     *
+     *       (m$^2$, rad$^2$).
      */
     public synchronized void setCov (double[] newCov) {
         this.cov = newCov;
