@@ -30,7 +30,6 @@ import javaclient3.structures.PlayerBbox;
 import javaclient3.structures.PlayerMsgHdr;
 import javaclient3.structures.PlayerPoint2d;
 import javaclient3.structures.PlayerPose;
-import javaclient3.structures.blobfinder.PlayerBlobfinderBlob;
 import javaclient3.structures.laser.PlayerLaserConfig;
 import javaclient3.structures.laser.PlayerLaserData;
 import javaclient3.structures.laser.PlayerLaserDataScanpose;

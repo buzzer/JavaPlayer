@@ -338,7 +338,7 @@ public interface PlayerConstants {
 
 	public final int PLAYER_JOYSTICK_DATA_STATE = 1;
 
-	public final int PLAYER_LASER_MAX_SAMPLES    = 1024;
+	public final int PLAYER_LASER_MAX_SAMPLES    = 1081;
 	public final int PLAYER_LASER_DATA_SCAN      = 1;
 	public final int PLAYER_LASER_DATA_SCANPOSE  = 2;
 	public final int PLAYER_LASER_REQ_GET_GEOM   = 1;
