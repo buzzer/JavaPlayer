@@ -22,7 +22,6 @@
 package javaclient3;
 
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -31,7 +30,6 @@ import javaclient3.structures.PlayerMsgHdr;
 import javaclient3.structures.PlayerPoint3d;
 import javaclient3.structures.pointcloud3d.PlayerPointCloud3DData;
 import javaclient3.structures.pointcloud3d.PlayerPointCloud3DElement;
-import javaclient3.structures.rfid.PlayerRfidTag;
 import javaclient3.xdr.OncRpcException;
 import javaclient3.xdr.XdrBufferDecodingStream;
 
