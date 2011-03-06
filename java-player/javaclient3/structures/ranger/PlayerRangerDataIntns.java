@@ -56,7 +56,7 @@ public class PlayerRangerDataIntns implements PlayerConstants {
     }
 
     /**
-     * @param newIntens  The intensity readings [m]
+     * @param newIntns  The intensity readings [m]
      */
     public synchronized void setIntns (double[] newIntns) {
         this.intns = newIntns;

@@ -67,7 +67,7 @@ public class PlayerGraphics2dCmdPolyline implements PlayerConstants {
     }
 
     /**
-     * @param newCount Array of points to be joined by lines
+     * @param newPoints Array of points to be joined by lines
      *
      */
     public synchronized void setPoints (PlayerPoint2d[] newPoints) {

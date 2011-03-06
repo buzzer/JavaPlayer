@@ -96,7 +96,7 @@ public class PlayerWsnData implements PlayerConstants {
     }
 
     /**
-     * @param newNode_parent_id The WSN node's data packet
+     * @param newData_packet The WSN node's data packet
      *
      */
     public synchronized void setData_packet (PlayerWsnNodeData newData_packet) {

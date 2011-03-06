@@ -67,7 +67,7 @@ public class PlayerBlobfinderColorConfig implements PlayerConstants {
     }
 
     /**
-     * @param newRmin  Color channel defined on this structure
+     * @param newChannel  Color channel defined on this structure
      *
      */
     public synchronized void setChannel (int newChannel) {

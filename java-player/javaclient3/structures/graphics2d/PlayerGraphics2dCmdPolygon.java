@@ -71,7 +71,7 @@ public class PlayerGraphics2dCmdPolygon implements PlayerConstants {
     }
 
     /**
-     * @param newCount Array of points defining the polygon
+     * @param newPoints Array of points defining the polygon
      *
      */
     public synchronized void setPoints (PlayerPoint2d[] newPoints) {

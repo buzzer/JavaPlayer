@@ -294,7 +294,7 @@ public class Position2DInterface extends AbstractPositionDevice {
      * <br><br>
      * See the player_position2d_cmd_vel_head_t structure from player.h
      * @param velocity forward velocity (m/s)
-     * @param absolute turning angle (rad)
+     * @param angle absolute turning angle (rad)
      */
     public void setVelHead (double velocity, double angle) {
         try {

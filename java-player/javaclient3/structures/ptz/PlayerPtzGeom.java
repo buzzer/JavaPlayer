@@ -49,7 +49,7 @@ public class PlayerPtzGeom implements PlayerConstants {
     }
 
     /**
-     * @param newPos  Pose of the ptz base
+     * @param newPose  Pose of the ptz base
      */
     public synchronized void setPose (PlayerPose3d newPose) {
         this.pose = newPose;

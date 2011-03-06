@@ -67,7 +67,7 @@ public class PlayerGraphics2dCmdPoints implements PlayerConstants {
     }
 
     /**
-     * @param newCount Array of points
+     * @param newPoints Array of points
      *
      */
     public synchronized void setPoints (PlayerPoint2d[] newPoints) {

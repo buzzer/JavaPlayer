@@ -81,7 +81,7 @@ public class PlayerGraphics3dCmdDraw implements PlayerConstants {
     }
 
     /**
-     * @param newCount Array of points
+     * @param newPoints Array of points
      *
      */
     public synchronized void setPoints (PlayerPoint3d[] newPoints) {
