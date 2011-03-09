@@ -138,37 +138,48 @@ public class PlayerClient extends Thread implements PlayerConstants {
             // Read and print (on screen) all available devices
             requestDeviceList ();
             readAll ();
-            if (isReadyPDDList()) {
-                PlayerDeviceDevlist list = getPDDList ();
-                playerInfo.append ("selected devices [" + serverName + ":" +
-                        portNumber + "]:" + "\n");
-                for (int i = 0; i < list.getDeviceCount (); i++)
-                {
-                    // Decode the host
-//                    XdrBufferEncodingStream xdr = new XdrBufferEncodingStream (4);
-//                    xdr.beginEncoding (null, 0);
-//                    xdr.xdrEncodeInt (list.getDevList ()[i].getHost ());
-//                    xdr.endEncoding ();
-//                    String host = xdr.getXdrData ()[3] + "." + xdr.getXdrData ()[2] +
-//                            "." + xdr.getXdrData ()[1] + "." + xdr.getXdrData ()[0];
 
-//                    xdr.close ();
+            /**
+             *  As looping through all devices is for logging only,
+             *  turn it off if not needed to gain performance when
+             *  the player server has many devices.
+             *  Set the log level to higher than INFO, e.g. SEVERE,
+             *  to get a performance advantage.
+             */
+            if (logger.getLevel().intValue() <= Level.INFO.intValue())
+            {
+                if (isReadyPDDList()) {
+                    PlayerDeviceDevlist list = getPDDList ();
+                    playerInfo.append ("selected devices [" + serverName + ":" +
+                            portNumber + "]:" + "\n");
+                    for (int i = 0; i < list.getDeviceCount (); i++)
+                    {
+                        // Decode the host
+                        //                    XdrBufferEncodingStream xdr = new XdrBufferEncodingStream (4);
+                        //                    xdr.beginEncoding (null, 0);
+                        //                    xdr.xdrEncodeInt (list.getDevList ()[i].getHost ());
+                        //                    xdr.endEncoding ();
+                        //                    String host = xdr.getXdrData ()[3] + "." + xdr.getXdrData ()[2] +
+                        //                            "." + xdr.getXdrData ()[1] + "." + xdr.getXdrData ()[0];
 
-                    // Print everything on screen
-                    playerInfo.append (" " + //host + ":" +
+                        //                    xdr.close ();
+
+                        // Print everything on screen
+                        playerInfo.append (" " + //host + ":" +
                                 + list.getDevList ()[i].getRobot () +
-                            ":" + pcu.lookupName (list.getDevList ()[i].getInterf ()) +
-                            ":" + list.getDevList ()[i].getIndex ());
+                                ":" + pcu.lookupName (list.getDevList ()[i].getInterf ()) +
+                                ":" + list.getDevList ()[i].getIndex ());
 
-                    PlayerDevAddr pda = list.getDevList ()[i];
-                    // Request additional device information
-                    requestDriverInfo (pda);
-                    readAll ();
-                    if (isReadyPDDI ())
-                        // Log the driver's name if possible
-                        playerInfo.append (" (" + getPDDI ().getDriverName() + ")\n");
-                    else
-                        playerInfo.append ("\n");
+                        PlayerDevAddr pda = list.getDevList ()[i];
+                        // Request additional device information
+                        requestDriverInfo (pda);
+                        readAll ();
+                        if (isReadyPDDI ())
+                            // Log the driver's name if possible
+                            playerInfo.append (" (" + getPDDI ().getDriverName() + ")\n");
+                        else
+                            playerInfo.append ("\n");
+                    }
                 }
             }
             // Send the Player information to the logger
