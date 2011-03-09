@@ -146,7 +146,7 @@ public class PlayerClient extends Thread implements PlayerConstants {
              *  Set the log level to higher than INFO, e.g. SEVERE,
              *  to get a performance advantage.
              */
-            if (logger.getLevel().intValue() <= Level.INFO.intValue())
+            if ( logger.getLevel() == null || logger.getLevel().intValue() <= Level.INFO.intValue() )
             {
                 if (isReadyPDDList()) {
                     PlayerDeviceDevlist list = getPDDList ();
