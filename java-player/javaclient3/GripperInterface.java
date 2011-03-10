@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: GripperInterface.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: GripperInterface.java 115 2011-03-03 19:38:51Z corot $
  *
  */
 package javaclient3;
@@ -35,13 +35,20 @@ import javaclient3.xdr.OncRpcException;
 import javaclient3.xdr.XdrBufferDecodingStream;
 
 /**
- * The gripper interface provides access to a robotic gripper.
+ * The gripper interface provides access to a robotic gripper. A gripper is
+ * a device capable of closing around and carrying an object of suitable size
+ * and shape. On a mobile robot, a gripper is typically mounted near the floor
+ * on the front, or on the end of a robotic limb. Grippers typically have two
+ * "fingers" that close around an object. Some grippers can detect whether an
+ * object is within the gripper (using, for example, light beams). Some grippers
+ * also have the ability to move the a carried object into a storage system,
+ * freeing the gripper to pick up a new object, and move objects from the storage
+ * system back into the gripper.
  * @author Radu Bogdan Rusu, Maxim Batalin
  * @version
  * <ul>
  *      <li>v3.0 - Player 3.0 supported
  * </ul>
- * TODO: rewrite comments and add open/close/stop/store/retrieve commands
  */
 public class GripperInterface extends PlayerDevice {
 
@@ -62,36 +69,14 @@ public class GripperInterface extends PlayerDevice {
     public GripperInterface (PlayerClient pc) { super (pc); }
 
     /**
-     * The gripper interface returns 2 bytes that represent the current state
-     * of the gripper; the format is given below. Note that the exact
-     * interpretation of this data may vary depending on the details of your
-     * gripper and how it is connected to your robot (e.g., General I/O vs.
-     * User I/O for the Pioneer gripper).
-     * <br><br>
-     * The following list defines how the data can be interpreted for some
-     * Pioneer robots and Stage:
-     * <br>
-     * <ul>
-     *          <li>state (unsigned byte)
-     *          <ul>
-     *              <li>bit 0: Paddles open
-     *              <li>bit 1: Paddles closed
-     *              <li>bit 2: Paddles moving
-     *              <li>bit 3: Paddles error
-     *              <li>bit 4: Lift is up
-     *              <li>bit 5: Lift is down
-     *              <li>bit 6: Lift is moving
-     *              <li>bit 7: Lift error
-     *          </ul>
-     *          <li>beams (unsigned byte)
-     *          <ul>
-     *              <li>bit 0: Gripper limit reached
-     *              <li>bit 1: Lift limit reached
-     *              <li>bit 2: Outer beam obstructed
-     *              <li>bit 3: Inner beam obstructed
-     *              <li>bit 4: Left paddle open
-     *              <li>bit 5: Right paddle open
-     * </ul>
+     * The gripper interface returns the current state of the gripper
+     * and information on a potential object in the gripper.
+     * State may be PLAYER_GRIPPER_STATE_OPEN, PLAYER_GRIPPER_STATE_CLOSED,
+     * PLAYER_GRIPPER_STATE_MOVING or PLAYER_GRIPPER_STATE_ERROR.
+     * Beams provides information on how far into the gripper an object is.
+     * For most grippers, this will be a bit mask, with each bit representing
+     * whether a beam has been interrupted or not.
+     * Stored provides the number of currently stored objects.
      */
     public synchronized void readData (PlayerMsgHdr header) {
         try {
@@ -128,6 +113,52 @@ public class GripperInterface extends PlayerDevice {
                 ("[Gripper] : Error while XDR-decoding payload: " +
                         e.toString(), e);
         }
+    }
+
+    /**
+     * Command: Open.
+     * <br>
+     * Tells the gripper to open.
+     */
+    public void open () {
+        setGripper (PLAYER_GRIPPER_CMD_OPEN);
+    }
+
+    /**
+     * Command: Close.
+     * <br>
+     * Tells the gripper to close.
+     */
+    public void close () {
+        setGripper (PLAYER_GRIPPER_CMD_CLOSE);
+    }
+
+    /**
+     * Command: Stop.
+     * <br>
+     * Tells the gripper to stop.
+     */
+    public void stop () {
+        setGripper (PLAYER_GRIPPER_CMD_STOP);
+    }
+
+    /**
+     * Command: Store.
+     * <br>
+     * Tells the gripper to store whatever it is holding.
+     */
+    public void store () {
+        setGripper (PLAYER_GRIPPER_CMD_STORE);
+    }
+
+    /**
+     * Command: Retrieve.
+     * <br>
+     * Tells the gripper to retrieve a stored object (so that it can
+     * be put back into the world). The opposite of store.
+     */
+    public void retrieve () {
+        setGripper (PLAYER_GRIPPER_CMD_RETRIEVE);
     }
 
     /**
@@ -171,8 +202,8 @@ public class GripperInterface extends PlayerDevice {
     /**
      * Request/reply: Get geometry.
      * <br><br>
-     * THe geometry (pose and size) of the gripper device can be queried by
-     * sending a null PLAYER_GRIPPER_REQ_GET_GEOM request.
+     * The geometry (pose and size, beams number and store capacity) of the gripper
+     * device can be queried by sending a null PLAYER_GRIPPER_REQ_GET_GEOM request.
      * <br><br>
      * See the player_gripper_geom structure from player.h
      */
@@ -286,5 +317,4 @@ public class GripperInterface extends PlayerDevice {
         }
         return false;
     }
-
 }

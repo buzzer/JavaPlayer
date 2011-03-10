@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: PlayerGripperData.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: PlayerGripperData.java 115 2011-03-03 19:38:51Z corot $
  *
  */
 
@@ -26,36 +26,20 @@ import javaclient3.structures.*;
 
 /**
  * Data: state (PLAYER_GRIPPER_DATA_STATE)
- * The gripper interface returns 3 values that represent the current
- * state of the gripper; the format is given below.  Note that the exact
- * interpretation of this data may vary depending on the details of your
- * gripper and how it is connected to your robot (e.g., General I/O vs. User
- * I/O for the Pioneer gripper).
- * The following list defines how the data can be interpreted for some
- * Pioneer robots and Stage:
- * - state (unsigned byte)
- *   - bit 0: Paddles open
- *   - bit 1: Paddles closed
- *   - bit 2: Paddles moving
- *   - bit 3: Paddles error
- *   - bit 4: Lift is up
- *   - bit 5: Lift is down
- *   - bit 6: Lift is moving
- *   - bit 7: Lift error
- * - beams (unsigned byte)
- *   - bit 0: Gripper limit reached
- *   - bit 1: Lift limit reached
- *   - bit 2: Outer beam obstructed
- *   - bit 3: Inner beam obstructed
- *   - bit 4: Left paddle open
- *   - bit 5: Right paddle open
+ * The gripper interface returns the current state of the gripper and
+ * information on a potential object in the gripper.
+ * State may be PLAYER_GRIPPER_STATE_OPEN, PLAYER_GRIPPER_STATE_CLOSED,
+ * PLAYER_GRIPPER_STATE_MOVING or PLAYER_GRIPPER_STATE_ERROR.
+ * Beams provides information on how far into the gripper an object is.
+ * For most grippers, this will be a bit mask, with each bit representing
+ * whether a beam has been interrupted or not.
+ * Stored provides the number of currently stored objects.
  *
  * @author Radu Bogdan Rusu
  * @version
  * <ul>
  *      <li>v3.0 - Player 3.0 supported
  * </ul>
- * TODO: rewrite comments
  */
 public class PlayerGripperData implements PlayerConstants {
 
@@ -76,7 +60,6 @@ public class PlayerGripperData implements PlayerConstants {
 
     /**
      * @param newState  The current gripper state
-     *
      */
     public synchronized void setState (int newState) {
         this.state = newState;
@@ -91,7 +74,6 @@ public class PlayerGripperData implements PlayerConstants {
 
     /**
      * @param newBeams  The current gripper breakbeam state
-     *
      */
     public synchronized void setBeams (int newBeams) {
         this.beams = newBeams;
@@ -106,7 +88,6 @@ public class PlayerGripperData implements PlayerConstants {
 
     /**
      * @param newStored  The number of currently-stored objects
-     *
      */
     public synchronized void setStored (int newStored) {
         this.stored = newStored;

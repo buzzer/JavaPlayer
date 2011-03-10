@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: PlayerClient.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: PlayerClient.java 116 2011-03-09 18:55:02Z corot $
  *
  */
 package javaclient3;

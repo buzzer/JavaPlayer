@@ -16,7 +16,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id: PlayerCameraData.java 90 2010-05-02 18:09:04Z corot $
+ * $Id: PlayerCameraData.java 117 2011-03-09 20:10:02Z corot $
  *
  */
 
@@ -25,98 +25,96 @@ package javaclient3.structures.camera;
 import javaclient3.structures.*;
 
 /**
- * Data: state (PLAYER_CAMERA_DATA_STATE) 
+ * Data: state (PLAYER_CAMERA_DATA_STATE)
  * @author Radu Bogdan Rusu
  * @version
  * <ul>
- *      <li>v2.0 - Player 2.0 supported
+ *      <li>v3.0 - Player 3.0 supported
  * </ul>
  */
 public class PlayerCameraData implements PlayerConstants {
 
-    // Image dimensions [pixels]. 
+    // Image dimensions [pixels].
     private int width;
-    // Image dimensions [pixels]. 
+    // Image dimensions [pixels].
     private int height;
-    // Image bits-per-pixel (8, 16, 24, 32). 
+    // Image bits-per-pixel (8, 16, 24, 32).
     private int bpp;
-    // Image format (must be compatible with depth). 
+    // Image format (must be compatible with depth).
     private int format;
     // Some images (such as disparity maps) use scaled pixel values;
     // for these images, fdiv specifies the scale divisor (i.e., divide
-    // the integer pixel value by fdiv to recover the real pixel value). 
+    // the integer pixel value by fdiv to recover the real pixel value).
     private int fdiv;
     // Image compression; @ref PLAYER_CAMERA_COMPRESS_RAW indicates no
-    // compression. 
+    // compression.
     private int compression;
-    // Size of image data as stored in image buffer (bytes) 
-    private int image_count;
     // Compressed image data (byte-aligned, row major order).
     // Multi-byte image formats (such as MONO16) must be converted
-    // to network byte ordering. 
-    private byte[] image = new byte[PLAYER_CAMERA_IMAGE_SIZE];
+    // to network byte ordering.
+    private byte[] image;
 
 
     /**
-     * @return  Image dimensions [pixels]. 
+     * @return  Image dimensions [pixels].
      **/
     public synchronized int getWidth () {
         return this.width;
     }
 
     /**
-     * @param newWidth  Image dimensions [pixels]. 
-     *
+     * @param newWidth  Image dimensions [pixels].
      */
     public synchronized void setWidth (int newWidth) {
         this.width = newWidth;
     }
+
     /**
-     * @return  Image dimensions [pixels]. 
+     * @return  Image dimensions [pixels].
      **/
     public synchronized int getHeight () {
         return this.height;
     }
 
     /**
-     * @param newHeight  Image dimensions [pixels]. 
-     *
+     * @param newHeight  Image dimensions [pixels].
      */
     public synchronized void setHeight (int newHeight) {
         this.height = newHeight;
     }
+
     /**
-     * @return  Image bits-per-pixel (8, 16, 24, 32). 
+     * @return  Image bits-per-pixel (8, 16, 24, 32).
      **/
     public synchronized int getBpp () {
         return this.bpp;
     }
 
     /**
-     * @param newBpp  Image bits-per-pixel (8, 16, 24, 32). 
-     *
+     * @param newBpp  Image bits-per-pixel (8, 16, 24, 32).
      */
     public synchronized void setBpp (int newBpp) {
         this.bpp = newBpp;
     }
+
     /**
-     * @return  Image format (must be compatible with depth). 
+     * @return  Image format (must be compatible with depth).
      **/
     public synchronized int getFormat () {
         return this.format;
     }
 
     /**
-     * @param newFormat  Image format (must be compatible with depth). 
-     *
+     * @param newFormat  Image format (must be compatible with depth).
      */
     public synchronized void setFormat (int newFormat) {
         this.format = newFormat;
     }
+
     /**
      * @return  Some images (such as disparity maps) use scaled pixel values;
      *       for these images, fdiv specifies the scale divisor (i.e., divide
-     *       the integer pixel value by fdiv to recover the real pixel value). 
+     *       the integer pixel value by fdiv to recover the real pixel value).
      */
     public synchronized int getFdiv () {
         return this.fdiv;
@@ -125,46 +123,39 @@ public class PlayerCameraData implements PlayerConstants {
     /**
      * @param newFdiv  Some images (such as disparity maps) use scaled pixel values;
      *       for these images, fdiv specifies the scale divisor (i.e., divide
-     *       the integer pixel value by fdiv to recover the real pixel value). 
-     *
+     *       the integer pixel value by fdiv to recover the real pixel value).
      */
     public synchronized void setFdiv (int newFdiv) {
         this.fdiv = newFdiv;
     }
+
     /**
      * @return  Image compression; @ref PLAYER_CAMERA_COMPRESS_RAW indicates no
-     *       compression. 
+     *       compression.
      */
     public synchronized int getCompression () {
         return this.compression;
     }
 
     /**
-     * @param newCompression  Image compression; @ref PLAYER_CAMERA_COMPRESS_RAW indicates no
-     *       compression. 
-     *
+     * @param newCompression  Image compression; @ref PLAYER_CAMERA_COMPRESS_RAW
+     *       indicates no compression.
      */
     public synchronized void setCompression (int newCompression) {
         this.compression = newCompression;
     }
+
     /**
-     * @return  Size of image data as stored in image buffer (bytes) 
+     * @return  Size of image data as stored in image buffer (bytes).
      **/
     public synchronized int getImage_count () {
-        return this.image_count;
+        return (this.image == null)?0:this.image.length;
     }
 
     /**
-     * @param newImage_count  Size of image data as stored in image buffer (bytes) 
-     *
-     */
-    public synchronized void setImage_count (int newImage_count) {
-        this.image_count = newImage_count;
-    }
-    /**
      * @return  Compressed image data (byte-aligned, row major order).
      *       Multi-byte image formats (such as MONO16) must be converted
-     *       to network byte ordering. 
+     *       to network byte ordering.
      */
     public synchronized byte[] getImage () {
         return this.image;
@@ -173,11 +164,9 @@ public class PlayerCameraData implements PlayerConstants {
     /**
      * @param newImage  Compressed image data (byte-aligned, row major order).
      *       Multi-byte image formats (such as MONO16) must be converted
-     *       to network byte ordering. 
-     *
+     *       to network byte ordering.
      */
     public synchronized void setImage (byte[] newImage) {
         this.image = newImage;
     }
-
 }
