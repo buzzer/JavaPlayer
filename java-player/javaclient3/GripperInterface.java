@@ -183,22 +183,7 @@ public class GripperInterface extends PlayerDevice {
                         e.toString(), e);
         }
     }
-    // TODO define command constants
-    public void open() {
-    	setGripper(1);
-    }
-    public void close() {
-    	setGripper(2);
-    }
-    public void stop() {
-      setGripper(3);
-    }
-    public void store() {
-    	setGripper(4);
-    }
-    public void retrieve() {
-    	setGripper(5);
-    }
+
     /**
      * Request/reply: Get geometry.
      * <br><br>
